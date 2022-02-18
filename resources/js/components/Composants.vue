@@ -2,7 +2,7 @@
     <div> 
         <comppanier></comppanier>
         <div class="accordion" id="accordionExample">
-            <compboitier></compboitier>
+            <compboitier></compboitier> 
         </div>
         <div>
             <compalim></compalim>
