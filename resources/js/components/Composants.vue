@@ -50,7 +50,7 @@
     </div>
   </div>
 </div>  
-</div>  
+
         <!-- <compcg v-if ="this.$store.state.cgchoisistore ===''"></compcg>
     </div> -->
 </template>

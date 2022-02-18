@@ -14,7 +14,7 @@
               </div>
             <h4 v-if = 'this.loading == false'> "Choississez votre alimentation, elle transmettra l'énergie nécessaire a votre ordinateur" </h4>
             <ul class=menuUl1>
-            <li class="menuli1" v-for="(item) in alimentationsbdd" @click="click(item, item.id)">{{ item.text }}
+            <li class="menuli1" v-for="(item) in alimentationsbdd" @click="click(item, item.id)" :key="item">{{ item.text }}
             <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
             <img v-if="item.img != ''" class="image" :src= item.img>
             </li>

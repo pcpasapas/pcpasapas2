@@ -1,11 +1,10 @@
 <template>  
-            
             <div>
             <comppanier></comppanier>
             <h3>{{ label }}</h3>
             
             <ul class="menuUl1">
-            <li class="menuli1" v-for="(item) in menus" @click="changerMenus(item.id, item.text_prog, item.label)">{{ item.text }}
+            <li class="menuli1" v-for="(item) in menus" @click="changerMenus(item.id, item.text_prog, item.label)" :key='item'>{{ item.text }}
             <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
             <img v-show="item.img != ''" class="image" :src= item.img>
             </li>
