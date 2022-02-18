@@ -48,7 +48,8 @@ class BoitiersController extends Controller
     public function show(Boitiers $boitiers)
     {
         $posts = Boitiers::orderBy('created_at', 'desc')->get();
-        return response()->json($posts);
+        return response($posts);
+    // return response()->json($posts);
     }
 
 /**
