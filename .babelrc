@@ -1,13 +1,1 @@
-{
-    "presets": [
-        [
-            "env",
-            {
-                "targets": {
-                    "browsers":["last 2 versions"],
-                    "node":"current"
-                }
-            }
-        ]
-    ]
-}
+{ "presets": ["@babel/preset-env"] }
