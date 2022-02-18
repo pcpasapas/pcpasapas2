@@ -49,13 +49,15 @@ class AlimentationsController extends Controller
     public function show(Alimentations $alimentations)
     {
         $posts = Alimentations::orderBy('created_at', 'desc')->get();
-        return response()->json($posts);
+        return response($posts);
+    // return response()->json($posts);
     }
 
     public function showGTA(Alimentations $alimentations)
     {
         $posts = Alimentations::where('id', '1')->get();
-        return response()->json($posts);
+        return response($posts);
+    // return response()->json($posts);
     }
 
 
