@@ -7,7 +7,7 @@
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-          <div @deleteAlim>
+          <div @deleteAlim.prevent>
               <div class="d-flex align-items-center" v-if = 'this.loading'>
                 <strong>Chargement de vos composants ...</strong>
                 <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
