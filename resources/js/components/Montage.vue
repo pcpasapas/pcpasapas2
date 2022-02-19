@@ -146,7 +146,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 :root {
     --bleu: rgb(62, 176, 180);
     --bleufonce: rgb(71, 8, 243);

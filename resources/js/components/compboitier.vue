@@ -85,10 +85,13 @@ export default {
 .menuUl1 {
     list-style-type: none;
     justify-content: space-around;
-    display: flex;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
     background-color:rgba(184, 201, 248, 0.842);
     border-radius: 20px;
-    margin-top: 0px
+    margin: 0px;
+    padding:0px;
+    justify-items: center;
 }
 .menuli1 {
     border: 1px solid black;
@@ -128,5 +131,6 @@ export default {
         background-color: cadetblue;
         color: white;
     }
+
 </style>
 

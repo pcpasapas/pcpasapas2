@@ -115,5 +115,7 @@ export default {
 </script>
 
 <style lang="css">
-    
+    .accordion-body{
+    padding: 0px;
+}
 </style>
