@@ -56,7 +56,7 @@ export default {
         },
         alim(){
             document.getElementById("alim").focus();
-            axios.get('http://127.0.0.1:8000/api/alimentations')
+            axios.get('https://pcpasapas2.herokuapp.com/api/alimentations')
                 .then(res => {
                     this.alimentationsbdd = (res.data)
                     console.log(this.alimentationsbdd)
