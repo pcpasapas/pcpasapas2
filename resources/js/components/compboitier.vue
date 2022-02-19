@@ -51,7 +51,7 @@ export default {
             }
         },
         boitier() {
-            axios.get('http://127.0.0.1:8000/api/boitiers')
+            axios.get('https://pcpasapas2.herokuapp.com/api/boitiers')
                 .then(res => {
                     this.boitiersbdd = (res.data)
                     console.log(this.boitiersbdd)
