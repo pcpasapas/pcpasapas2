@@ -1,20 +1,20 @@
 <template>
     <div class="menu">
         <ul class="menuUl">
-            <router-link :to="{ name:'Home'}">
-                <li class="menuli" @click="fetchAllData()">Acceuil</li>
+            <router-link :to="{ name:'Home'}" class="menuli acceuil">
+                <li  @click="fetchAllData()">Acceuil</li>
             </router-link>
-            <li class="menuli" @click="effacepanier()">Dépannage / Recupération de données</li>
+            <li class="menuli a1" @click="effacepanier()">Dépannage / Recupération de données</li>
             <router-link :to="{ name:'Montage'}">
-                <li class="menuli" @click="effacepanier()">Montage PC complet</li>
+                <li class="menuli a1" @click="effacepanier()">Montage PC complet</li>
             </router-link>
             <router-link :to="{ name:'ComposantsView'}">
-                <li class="menuli" @click="effacepanier()">Achat de pieces détachées</li>
+                <li class="menuli a2" @click="effacepanier()">Achat de pieces détachées</li>
             </router-link>
             <router-link :to="{ name:'DevisView'}">
-                <li class="menuli" @click="effacepanier()">Demande de devis</li>
+                <li class="menuli a2" @click="effacepanier()">Demande de devis</li>
             </router-link>
-            <li class="menuli" @click="effacepanier()">Création de sites internet</li>
+            <li class="menuli a2" @click="effacepanier()">Création de sites internet</li>
         </ul>
     </div>   
 </template>
@@ -86,12 +86,24 @@ li {
 .menuUl {
     list-style-type: none;
     border-radius: 20px;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 33% 33% 33%;
     background-color:rgba(184, 201, 248, 0.842);
     justify-content: space-around;
-    display: flex;
+    display: grid;
     margin-top: 20px
 }
 
+.menuli.acceuil{
+    grid-row:1;
+    grid-column:1;
+}
+.menuli.a1{
+    grid-row: 1;
+}
+.menuli.a2{
+    grid-row: 2;
+}
 .menuli {
     border: 1px solid black;
     text-align: center;
@@ -99,6 +111,7 @@ li {
     list-style-type: none;
     background-color: white;
     display: grid;
+    grid-template-rows:50% 50%;
     margin: 10px;
     padding: 10px;
     flex-wrap: wrap;

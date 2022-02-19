@@ -40,7 +40,7 @@ export default {
     border: 1px solid black;
 	}
 	.titre_texte{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: "Lobster";
     display: inline-block;
     justify-content: center;
@@ -69,23 +69,21 @@ export default {
         border-radius: 40px;
         vertical-align: middle;
         margin-left: 20px;
-        height: 80%;
+        max-width: 90%;
+        max-height: 90%;
         align-self: center;
         justify-self: center;
-        grid-row-start: 1;
-        grid-row-end: 2;
+        grid-row: 1;
+        grid-column: 1;
+ 
     }
     .ordinateur{
-        height: 200px;
-        width: 40%;
+        max-width: 90%;
+        max-height: 90%;
         display: flex;
-        grid-column-start: 2;
-        position: absolute;
-        transform: translateX(-50%);
         justify-self: center;
         z-index: -1;
-        grid-row-start: 1;
-        grid-row-end: 2;
+        grid-column: 2;
 
     }
     .p{
