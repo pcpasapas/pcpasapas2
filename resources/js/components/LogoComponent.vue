@@ -48,7 +48,7 @@ export default {
     vertical-align: middle;
     line-height: normal;
     /* grid-column-start: 2; */
-    grid-row: 1 / span 2;
+    /* grid-row: 1 / span 2; */
     transform: translate(0, -40%);
     z-index: 1;
     margin-top: auto;
@@ -57,8 +57,10 @@ export default {
     .divlogo{
         display: grid;
         grid-template-columns: 20% 60% 20%;
-        grid-template-rows: 50% 50%;
+        grid-template-rows: 100%;
         margin-top: 10px;
+        width:100%;
+        height: 200px;
         border-radius: 20px;
         /* border: 1px solid black; */
     }
@@ -68,11 +70,11 @@ export default {
         border-radius: 40px;
         vertical-align: middle;
         margin-left: 20px;
-        height: 200px;
+        height: 100%;
         align-self: center;
         justify-self: center;
         grid-row-start: 1;
-        grid-row-end: 4;
+        grid-row-end: 2;
     }
     .ordinateur{
         height: 200px;
@@ -83,6 +85,8 @@ export default {
         transform: translateX(-50%);
         justify-self: center;
         z-index: -1;
+        grid-row-start: 1;
+        grid-row-end: 2;
 
     }
     .p{
@@ -92,6 +96,8 @@ export default {
         margin-bottom: auto;
         vertical-align: middle;
         justify-content: center;
+        grid-row-start: 1;
+        grid-row-end: 2;
     }
     .panier{
         grid-column: 3;
