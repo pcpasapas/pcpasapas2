@@ -1,9 +1,8 @@
 <template>
 	<div class="divlogo">
             <img src="/images/PcP.png" class="logo"/>
-            <img src="/images/ordinateur.png" class="ordinateur" />
-            <p class="titre_texte">Votre PC sur mesure <br> à prix mini </p>
-            <p>Mon compte  Mon panier</p>
+            <img src="/images/ordinateurtitre.png" class="ordinateur" />
+            <p>Mon compte <br> <br> <br> Mon panier</p>
     </div>
 
 
@@ -46,6 +45,7 @@ export default {
     justify-content: center;
     vertical-align: middle;
     line-height: normal;
+    position: absolute;
     /* grid-column-start: 2; */
     /* grid-row: 1 / span 2; */
     transform: translate(0, -40%);
