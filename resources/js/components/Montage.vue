@@ -154,7 +154,10 @@ export default {
 .menuUl1 {
     list-style-type: none;
     justify-content: space-around;
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding:0px;
+    justify-content: space-around;
     background-color: rgb(62, 176, 180);
     border-radius: 20px;
     margin-top: 0px
@@ -174,6 +177,7 @@ export default {
     justify-content: center;
     transition: transform 0.5s;
     cursor:pointer;
+    margin: auto;
 }
 
 .menuli1:hover {

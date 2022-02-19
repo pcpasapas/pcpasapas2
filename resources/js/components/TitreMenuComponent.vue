@@ -91,7 +91,7 @@ li {
     background-color:rgba(184, 201, 248, 0.842);
     justify-content: space-around;
     display: grid;
-    margin-top: 20px
+    padding: 0px;
 }
 
 .menuli.acceuil{
@@ -125,6 +125,10 @@ li {
     background-color: var(--bleufonce);
     transform: scale(1.1);
     color: white;
+}
+
+a{
+    text-decoration: none;
 }
 </style>
 

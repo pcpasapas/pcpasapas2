@@ -59,7 +59,7 @@ export default {
         grid-template-rows: 100%;
         margin-top: 10px;
         width:100%;
-        height: 200px;
+        max-height: 200px;
         border-radius: 20px;
         /* border: 1px solid black; */
     }
