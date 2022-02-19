@@ -156,7 +156,7 @@ export default {
     justify-content: space-around;
     display: grid;
     grid-template-columns: 50% 50%;
-    padding:0px;
+    padding:10px;
     justify-content: space-around;
     background-color: rgb(62, 176, 180);
     border-radius: 20px;
@@ -177,7 +177,6 @@ export default {
     justify-content: center;
     transition: transform 0.5s;
     cursor:pointer;
-    margin: auto;
 }
 
 .menuli1:hover {

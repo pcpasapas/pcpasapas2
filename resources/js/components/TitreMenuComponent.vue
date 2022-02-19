@@ -92,6 +92,7 @@ li {
     justify-content: space-around;
     display: grid;
     padding: 0px;
+    margin-bottom:10px;
 }
 
 .menuli.acceuil{
