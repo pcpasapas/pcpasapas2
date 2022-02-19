@@ -3,8 +3,7 @@
             <img src="/images/PcP.png" class="logo"/>
             <img src="/images/ordinateur.png" class="ordinateur" />
             <p class="titre_texte">Votre PC sur mesure <br> à prix mini </p>
-            <p>Mon compte</p>
-            <p class="panier">Panier</p>
+            <p>Mon compte  Mon panier</p>
     </div>
 
 
@@ -70,7 +69,7 @@ export default {
         border-radius: 40px;
         vertical-align: middle;
         margin-left: 20px;
-        height: 100%;
+        height: 80%;
         align-self: center;
         justify-self: center;
         grid-row-start: 1;
