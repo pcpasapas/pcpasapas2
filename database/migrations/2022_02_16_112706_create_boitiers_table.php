@@ -20,11 +20,11 @@ class CreateBoitiersTable extends Migration
             $table->string('alim');
             $table->integer('prix');
             $table->string('img');
+            $table->string('site');
+            $table->string('puissance');
             $table->timestamps();
         });
-        Schema::table('boitiers', function (Blueprint $table) {
-            $table->string('site');
-        });
+
     }
 
     /**
