@@ -2,7 +2,7 @@
 	<div class="divlogo">
             <img src="/images/PcP.png" class="logo"/>
             <img src="/images/ordinateurtitre.png" class="ordinateur" />
-            <p>Mon compte <br> <br> <br> Mon panier</p>
+            <p><a href="Home">Mon compte </a> <br> <br> <br> Mon panier</p>
     </div>
 
 
