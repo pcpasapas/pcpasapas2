@@ -30,7 +30,7 @@ export default {
 </script>
 <template>
   <div>
-  <h5>Contenu modifié le 20/02 à 10:02 </h5>
+  <h5>Contenu modifié le 20/02 à 10:02  </h5>
   <Logo_></Logo_>
   <!-- <logo-component></logo-component> -->
   <TitreMenu></TitreMenu>
