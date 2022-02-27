@@ -13,7 +13,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import router from './router';
 import store from './store';
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { BootstrapVue, BootstrapVueIcons, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,7 +21,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import "bootstrap";
 
 // Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
+Vue.use(BootstrapVueIcons);
+Vue.use(IconsPlugin);
 
 Vue.use(Vuex);
 Vue.use(VueRouter);

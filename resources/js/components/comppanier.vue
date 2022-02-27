@@ -3,15 +3,17 @@
     <div class="accordion" role="tablist">
         <b-card no-body class="mb-1" v-if="this.$store.state.boitierchoisistore != ''">
             <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-1 variant="info">{{ this.$store.state.boitierchoisistore.text }} {{ this.$store.state.boitierchoisistore.prix }} €</b-button>
+                <b-button block v-b-toggle.accordion-1 variant="info">{{ this.$store.state.boitierchoisistore.text }} {{ this.$store.state.boitierchoisistore.prix }} € 
+                <i class="bi bi-caret-down-square-fill"></i>
+                </b-button>
             </b-card-header>
-        <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+        <b-collapse id="accordion-1" accordion="my-accordion" role="tabpanel">
         <b-card-body>
-            <div class="card" id="boitier"  style="width: 80%;">
+            <div class="card" id="boitier"  style="width: 40%;">
                 <img class="card-img-top" :src="this.$store.state.boitierchoisistore.img" alt="Card image cap">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Nombre de ports USB en facade : 4</li>
-                    <li class="list-group-item">Alimentation incluse : {{this.$store.state.boitierchoisistore.alim}}</li>
+                    <li class="list-group-item">Alimentation incluse : {{this.$store.state.boitierchoisistore.alim}}</li> 
                     <li class="list-group-item">Format du boitier : {{this.$store.state.boitierchoisistore.format}}</li>
                     <li class="list-group-item">Prix : {{ this.$store.state.boitierchoisistore.prix }} €</li>
                 </ul>
@@ -25,11 +27,13 @@
         </b-card>
         <b-card no-body class="mb-1" v-if ="this.$store.state.alimchoisistore != ''">
             <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-2 variant="info">{{ this.$store.state.alimchoisistore.text }} {{ this.$store.state.alimchoisistore.prix }} €</b-button>
+                <b-button block v-b-toggle.accordion-2 variant="info">{{ this.$store.state.alimchoisistore.text }} {{ this.$store.state.alimchoisistore.prix }} €
+                    <i class="bi bi-caret-down-square-fill"></i>
+                </b-button>
             </b-card-header>
-        <b-collapse id="accordion-2" visible accordion="my-accordion" role="tabpanel">
+        <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
         <b-card-body>
-            <div class="card" id="boitier"  style="width: 80%;">
+            <div class="card" id="boitier"  style="width: 50%;">
                 <img class="card-img-top" :src= this.$store.state.alimchoisistore.img alt="Card image cap">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Puissance de l'alimentation : {{this.$store.state.alimchoisistore.puissance}}W</li>
@@ -45,29 +49,34 @@
         </b-card>
         <b-card no-body class="mb-1" v-if ="this.$store.state.processeurchoisistore != ''">
             <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-3 variant="info">{{ this.$store.state.processeurchoisistore.text }} {{ this.$store.state.processeurchoisistore.prix }} €</b-button>
+                <b-button block v-b-toggle.accordion-3 variant="info">{{ this.$store.state.processeurchoisistore.text }} {{ this.$store.state.processeurchoisistore.prix }} €
+                    <i class="bi bi-caret-down-square-fill"></i>
+                </b-button>
             </b-card-header>
-        <b-collapse id="accordion-3" visible accordion="my-accordion" role="tabpanel">
+        <b-collapse id="accordion-3"  accordion="my-accordion" role="tabpanel">
         <b-card-body>
-            <div class="card" id="processeur"  style="width: 80%;">
+            <div class="card" id="processeur"  style="width: 50%;">
                 <img class="card-img-top" :src= this.$store.state.processeurchoisistore.img alt="Card image cap">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Puissance du processeur {{this.$store.state.processeurchoisistore.puissance}}W</li>
+                    <li class="list-group-item">Puissance du processeur {{this.$store.state.processeurchoisistore.puissance}}Ghz</li>
+                    <li class="list-group-item">Socket du processeur :  {{this.$store.state.processeurchoisistore.socket}}</li>
                     <li class="list-group-item">Prix : {{ this.$store.state.processeurchoisistore.prix }} €</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" @click="alimEnleve()" class="card-link">Choisir un autre processeur</a>
+                    <a href="#" @click="processeurEnleve()" class="card-link">Choisir un autre processeur</a>
                     <a href="#" @click="boitierValide()" class="card-link">Valider ce processeur</a>
                 </div> 
             </div>
         </b-card-body>
       </b-collapse>
         </b-card>
+        <h3 class="non" v-if="this.$store.state.prixtotalstore > 0">
+            Prix Total = {{ this.$store.state.prixtotalstore }} €</h3>
     </div>
     
-    <div class="panier" v-if="this.$store.state.boitierchoisistore != '' || this.$store.state.alimchoisistore !='' || this.$store.state.processeurchoisistore !=''">
+    <!-- <div class="panier" v-if="this.$store.state.boitierchoisistore != '' || this.$store.state.alimchoisistore !='' || this.$store.state.processeurchoisistore !=''">
         <ul class=ulpanier>
-            <h3 class="non">Votre PANIER : </h3>
+
             <li class="lipanier" v-if ="this.$store.state.cartemerechoisistore != ''" @click="cartemereEnleve()">
                 <p class="p">{{ this.$store.state.cartemerechoisistore.text }}</p>
                 <p class="prix" v-if="this.$store.state.cartemerechoisistore.prix != null"> {{ this.$store.state.cartemerechoisistore.prix }} €</p>
@@ -83,22 +92,14 @@
                 <p class="prix" v-if="this.$store.state.cgchoisistore.prix != null"> {{ this.$store.state.cgchoisistore.prix }} €</p>
                 <p class="enleve" style="color: white">Cliquez pour supprimer et choisir un autre modèle</p>
             </li>
-            <h3 class="non">
-            Prix Total = {{ this.$store.state.prixtotalstore }} €</h3>
+            
         </ul>
         <ul class="ulconfig">
         <h3>Votre Configuration : </h3>
             <li class="liconfig" v-if="this.$store.state.boitierchoisistore != '' || this.$store.state.alimchoisistore !='' || this.$store.state.processeurchoisistore !=''">               
             <img class="imageconfig" :src= this.$store.state.boitierchoisistore.img>
             <ul>
-                <li v-if="this.$store.state.alimchoisistore !=''">Puissance de l'alimentation : {{this.$store.state.alimchoisistore.puissance}} w
-                </li>            
-                <li class="liconfig">
-                    <img v-if ="this.$store.state.alimchoisistore != ''" class="imageconfigbouge" :src= this.$store.state.alimchoisistore.img>
-                </li>
-                <li class="liconfig">
-                    <img v-if="this.$store.state.processeurchoisistore!= ''" class="imageconfigbouge" :src= this.$store.state.processeurchoisistore.img>
-                </li>
+
                 <li class="liconfig">
                     <img v-if="this.$store.state.cartemerechoisistore != ''" class="imageconfigbouge" :src= this.$store.state.cartemerechoisistore.img>
                 </li>
@@ -112,16 +113,18 @@
            </li>  
         </ul>
         <section class="basPanier">Les prix sont donnés à titre indicatifs et varient régulièrement. Demandez un devis pour confirmer les tarifs.</section>
-    </div>
+    </div> -->
     </div>
 </template>
 
 <script>
 
-
+import { IconsPlugin } from 'bootstrap-vue'
 export default {
+
     name:"comppanier",
     components: {
+        IconsPlugin
     },
     data() {
         return {
