@@ -1,80 +1,44 @@
 <template>  
-            <div>
-            <h4> "Choississez votre processeur, il sera sans doute le composant le plus cher mais aussi le plus important de votre config" </h4>
+  <div class="accordion-item" v-if ="this.$store.state.processeurchoisistore === ''">
+    <h2 class="accordion-header" id="headingThree">
+      <button id ="processeur" class="accordion-button collapsed" @click="processeur()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Processeur
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <div @deleteProc.prevent>
+              <div class="d-flex align-items-center" v-if = 'this.loading'>
+                <strong>Chargement de vos composants .... </strong>
+                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+              </div>
+            <h4 v-if='this.loading == false'>  "Choississez votre processeur, il sera sans doute le composant le plus cher mais aussi le plus important de votre config" </h4>
             <ul class=menuUl1>
-            <li class="menuli1" v-for="(item) in menusproc_" @click="click(item,item.id)">{{ item.text }}
-            <p>{{item.socket}}</p>
+            <li class="menuli1" v-for="(item) in procbdd" @click="click(item)" :key="item.id">{{ item.text }}
             <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
             <img v-if="item.img != ''" class="image" :src= item.img>
             </li>
             </ul>
             </div>
+      </div>
+    </div>
+    </div>
 </template>
 
 <script>
 
-const menusproc = [
-    {
-        id: 55, 
-        id_supp:4,
-        text_prog: "",
-        text:"Intel Core i3 Processeur Graphique intégré",
-        graphique:"oui",
-        prix:150,
-        socket:"intel1200",
-        img: "/images/inteli3.jpg"
-    }
-    ,
-    { 
-        id: 51,
-        id_supp:4,
-        text_prog: "", 
-        text:"Intel Core i3 minimum 3,7 GHz",
-        graphique:"non",
-        prix:110,
-        img: "/images/inteli3.jpg"
-    },
-    { 
-        id: 52 ,
-        id_supp:4,
-        text_prog: "",
-        text:"Intel Core i5 minimum 2,9 GHz",
-        graphique:"non",
-        prix:180, 
-        img: "/images/inteli5.jpg"
-    },
-    { 
-        id: 53, 
-        id_supp:4,
-        text_prog: "",
-        text:"Intel Core i5 minimum 3,5 GHz",
-        graphique:"non",
-        prix:250,
-        socket:"lga1151",
-        img: "/images/inteli5.jpg"
-    },
-    { 
-        id: 54 , 
-        id_supp:4,
-        text_prog: "",
-        text:"AMD Ryzen 5 minimum 3,9 GHz",
-        graphique:"non",
-        prix:265,
-        img: "/images/amdryzen5.jpg"
-    },
-]
+import store from '../store/index' 
+
 export default {
     name: 'compprocesseur', 
     props: {
         id:Number,
-        cartemere:"",
-        // menusproc: {
-        //     default: menusproc
-        // }
+        alim:"",
     },
-    data () {
+    data: function() {
       return {
-          menusproc_:menusproc,
+          procbdd:[],
+          loading : true,
       }
     },
     methods: {
@@ -85,13 +49,17 @@ export default {
         click(item, item2){
             this.processeurok(item);
             this.$emit('delete',item)
+        },
+        processeur() {
+            axios.get('https://pcpasapas2.herokuapp.com/api/processeur') 
+                .then(res => {
+                    this.procbdd = (res.data)
+                    console.log(this.procbdd)
+                    this.loading = false
+                    return res.data
+                })
         }
-        
     },
-    updated() {
-        this.menusproc_ = this.menusproc_.filter (obj => obj.socket === this.cartemere.socket);   
-    },
-        
 }   
 </script>
 
@@ -103,10 +71,13 @@ export default {
 .menuUl1 {
     list-style-type: none;
     justify-content: space-around;
-    display: flex;
-    background-color: rgb(62, 176, 180);
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    background-color:rgba(184, 201, 248, 0.842);
     border-radius: 20px;
-    margin-top: 0px
+    margin: 0px;
+    padding:0px;
+    justify-items: center;
 }
 .menuli1 {
     border: 1px solid black;
@@ -142,5 +113,10 @@ export default {
     font-size: 1.3rem;
     display: grid;
 }
+#boitier :hover{
+        background-color: cadetblue;
+        color: white;
+    }
+
 </style>
 

@@ -5,23 +5,12 @@
             <compboitier></compboitier> 
         </div>
         <div>
-            <compalim></compalim>
+            <compalim v-if="this.$store.state.boitierchoisistore.alim != 'oui'"></compalim>
         </div>
-  <div class="accordion-item " v-if ="this.$store.state.processeurchoisistore === ''">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Processeurs
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-          <compprocesseur 
-        :cartemere=cartemereChoisi
-        @delete="deleteprocesseur">
-        </compprocesseur>
-      </div>
-    </div>
-  </div>
+        <div>
+            <compprocesseur></compprocesseur>
+        </div>
+
   <div class="accordion-item" v-if ="this.$store.state.cartemerechoisistore === ''">
     <h2 class="accordion-header" id="headingFour">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapsefour">

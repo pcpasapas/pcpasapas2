@@ -1,58 +1,62 @@
 <template>
-    <div> 
-        <form action="mail.php" method="post" enctype="text/plain">>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Votre adresse mail :</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nom@example.com">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Votre devis concerne :</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Dépannage / Récupération de données</option>
-      <option>Montage Pc complet</option>
-      <option>Achat de pièces détachées</option>
-      <option>Création de sites internet</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-          <input type="submit" />
-</form>
-        </div>
+<div>
+  <form ref="form" @submit.prevent="sendEmail">
+    <div class="row">
+      <div class="col">
+        <label>Nom : </label>
+        <input type="text" class="form-control" placeholder="Nom">
+      </div>
+      <div class="col">
+        <label>Prénom : </label>
+        <input type="text" class="form-control" placeholder="Prénom" name="user_name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Votre adresse E-mail : </label>
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="user_email">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Ville : </label>
+        <input type="text" class="form-control" id="inputCity" name="user_city">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Code postal : </label>
+        <input type="text" class="form-control" id="inputZip" name="user_zip">
+      </div>
+      <div class="col-auto my-1">
+        <label class="mr-sm-2" for="inlineFormCustomSelect">Votre demande concerne :</label>
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected>Dépannage / Récupération de données</option>
+          <option>Montage Pc Complet</option>
+          <option>Achat de pièces détachées</option>
+          <option>Création de sites internet</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label>Informations supplémentaires </label>
+        <textarea name="message"></textarea>
+      </div>
+    </div>
+  </form>
+</div>
 </template>
 
 <script>
-
-
-
-
+import emailjs from '@emailjs/browser';
 
 export default {
-    name: 'Devis',
-    props: [],
-    data() {
-        return {
-        }},
-    computed: {
-    },
-    methods: {
+  methods: {
+    sendEmail() {
+      emailjs.sendForm('service_y8whgsv', 'template_8ijl6oj', this.$refs.form, 'user_uNtiX5dqwGSZwrnzZXWZh')
+        .then((result) => {
+            console.log('SUCCESS!', result.text);
+        }, (error) => {
+            console.log('FAILED...', error.text);
+        });
     }
-
+  }
 }
 </script>
-
-<style lang="css">
-    
-</style>

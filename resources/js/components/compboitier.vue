@@ -14,7 +14,7 @@
               </div>
             <h4 v-if='this.loading == false'> "Choississez votre boitier, il intégrera tous vos composants " </h4>
             <ul class=menuUl1>
-            <li class="menuli1" v-for="(item) in boitiersbdd" @click="click(item, item.id)" :key="item">{{ item.text }}
+            <li class="menuli1" v-for="(item) in boitiersbdd" @click="click(item)" :key="item.id">{{ item.text }}
             <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
             <img v-if="item.img != ''" class="image" :src= item.img>
             </li>
@@ -55,12 +55,16 @@ export default {
                 .then(res => {
                     this.boitiersbdd = (res.data)
                     console.log(this.boitiersbdd)
+                    if (this.$store.state.alimchoisistore != "") {
+                        this.boitiersbdd = this.boitiersbdd.filter(boitier => boitier.alim == 'non')
+                        console.log(this.boitiersbdd)
+                    }
                     this.loading = false
                     return res.data
-                    
                 })
         },
-        click(item, item2){
+        click(item){
+            console.log(item)
             this.boitierok(item);
             this.$emit('delete',item)
         },
