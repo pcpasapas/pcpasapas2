@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Processeur;
+use App\Models\Processeurs;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProcesseurController extends Controller
+class ProcesseursController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,12 +33,12 @@ class ProcesseurController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Processeur  $processeur
+     * @param  \App\Models\Processeurs  $processeur
      * @return \Illuminate\Http\Response
      */
-    public function show(Processeur $processeur)
+    public function show(Processeurs $processeurs)
     {
-        $posts = Processeur::orderBy('created_at', 'desc')->get();
+        $posts = Processeurs::orderBy('created_at', 'desc')->get();
         return response($posts);
     }
 

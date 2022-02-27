@@ -43,16 +43,31 @@
         </b-card-body>
       </b-collapse>
         </b-card>
+        <b-card no-body class="mb-1" v-if ="this.$store.state.processeurchoisistore != ''">
+            <b-card-header header-tag="header" class="p-1" role="tab">
+                <b-button block v-b-toggle.accordion-3 variant="info">{{ this.$store.state.processeurchoisistore.text }} {{ this.$store.state.processeurchoisistore.prix }} €</b-button>
+            </b-card-header>
+        <b-collapse id="accordion-3" visible accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+            <div class="card" id="processeur"  style="width: 80%;">
+                <img class="card-img-top" :src= this.$store.state.processeurchoisistore.img alt="Card image cap">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Puissance du processeur {{this.$store.state.processeurchoisistore.puissance}}W</li>
+                    <li class="list-group-item">Prix : {{ this.$store.state.processeurchoisistore.prix }} €</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" @click="alimEnleve()" class="card-link">Choisir un autre processeur</a>
+                    <a href="#" @click="boitierValide()" class="card-link">Valider ce processeur</a>
+                </div> 
+            </div>
+        </b-card-body>
+      </b-collapse>
+        </b-card>
     </div>
     
     <div class="panier" v-if="this.$store.state.boitierchoisistore != '' || this.$store.state.alimchoisistore !='' || this.$store.state.processeurchoisistore !=''">
         <ul class=ulpanier>
             <h3 class="non">Votre PANIER : </h3>
-            <li class="lipanier" v-if ="this.$store.state.processeurchoisistore != ''" @click="processeurEnleve()">
-                <p class="p">{{ this.$store.state.processeurchoisistore.text }}</p>
-                <p class="prix" v-if="this.$store.state.processeurchoisistore.prix != null"> {{ this.$store.state.processeurchoisistore.prix }} €</p>
-                <p class="enleve" style="color: white">Cliquez pour supprimer et choisir un autre modèle</p>
-            </li>
             <li class="lipanier" v-if ="this.$store.state.cartemerechoisistore != ''" @click="cartemereEnleve()">
                 <p class="p">{{ this.$store.state.cartemerechoisistore.text }}</p>
                 <p class="prix" v-if="this.$store.state.cartemerechoisistore.prix != null"> {{ this.$store.state.cartemerechoisistore.prix }} €</p>
