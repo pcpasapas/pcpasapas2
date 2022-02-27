@@ -51,7 +51,7 @@ export default {
             this.$emit('delete',item)
         },
         processeur() {
-            axios.get('https://pcpasapas2.herokuapp.com/api/processeur') 
+            axios.get('https://pcpasapas2.herokuapp.com/api/processeurs') 
                 .then(res => {
                     this.procbdd = (res.data)
                     console.log(this.procbdd)
