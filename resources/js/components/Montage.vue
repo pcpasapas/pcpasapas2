@@ -101,8 +101,6 @@ export default {
                     cartemere:2,
                     cg:1,
                 }
-                // console.log(menuscg.props.menuscg.default[1])
-                // this.changerpanier(tabconfig)
                 await this.changerpanier(tabconfig);
                 this.loading = false;
             }
