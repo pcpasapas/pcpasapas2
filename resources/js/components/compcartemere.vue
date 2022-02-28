@@ -1,41 +1,47 @@
 <template>  
-            <div>
-            <h4> "Choississez votre carte mère, elle reliera tous les élements entres eux à l'interieur de votre boitier" </h4>
+  <div class="accordion-item" v-if ="this.$store.state.processeurchoisistore === ''">
+    <h2 class="accordion-header" id="headingFour">
+      <button id ="cartemere" class="accordion-button collapsed" @click="cartemere()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Carte mère
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <div @deleteCm.prevent>
+              <div class="d-flex align-items-center" v-if = 'this.loading'>
+                <strong>Chargement de vos composants .... </strong>
+                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+              </div>
+            <h4 v-if='this.loading == false'> "Choississez votre carte mère, elle reliera tous les élements entres eux à l'interieur de votre boitier" </h4>
             <ul class=menuUl1>
-            <li class="menuli1" 
-            v-for="(item) in menuscartemere_" 
-            v-on:click="click(item,item.id)">{{ item.text }}
-            <p>{{item.socket}}</p>
+            <li class="menuli1" v-for="(item) in cmbdd" @click="click(item)" :key="item.id">{{ item.text }}
             <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
             <img v-if="item.img != ''" class="image" :src= item.img>
             </li>
             </ul>
             </div>
+      </div>
+    </div>
+    </div>
 </template>
 
 <script>
 
-const menuscartemere = [
-    { id: 61, text:"Carte mère GIGABYTE b550M", format:"atx", socket: "am4", ram:"ddr4", cg:false, prix:90, img: "/images/cmgigabyte.jpg"},
-    { id :62, text:"Carte mère ASUS B365M-K", format:"mAtx", socket:"lga1151", ram:"ddr4", cg:true, prix:80, img:"/images/cmasus.jpg"},
-    { id :63, text:"Carte mère Gigabyte H410M S2H V3", format:"mAtx", socket:"intel1200", ram:"ddr4", cg:false, prix:80, usb:6, img:"/images/cmh410.jpg"},
-]
+import store from '../store/index' 
+
 export default {
-    name: 'compcartemere', 
+    name: 'compprocesseur', 
     props: {
         id:Number,
-        processeur:"",
-        // menuscartemere: {
-        //     default: menuscartemere
-        // }
+        alim:"",
     },
-    data () {
+    data: function() {
       return {
-          menuscartemere_: menuscartemere
+          cmbdd:[],
+          loading : true,
       }
     },
     methods: {
-
         cartemereok(item) {
             this.$store.commit('UPDATE_CARTE_MERE',item)
             this.$store.commit('UPDATE_PRIX', item.prix)
@@ -43,15 +49,21 @@ export default {
         click(item, item2){
             this.cartemereok(item);
             this.$emit('delete',item)
+        },
+        cartemere() {
+            axios.get('https://pcpasapas2.herokuapp.com/api/cartemere') 
+                .then(res => {
+                    this.cmbdd = (res.data)
+                    console.log(this.cmbdd)
+                    this.loading = false
+                    return res.data
+                })
         }
-    },
-    updated() {
-        this.menuscartemere_ = this.menuscartemere_.filter (obj => obj.socket === this.processeur.socket);   
     },
 }   
 </script>
 
-<style>
+<style scoped>
 :root {
     --bleu: rgb(62, 176, 180);
     --bleufonce: rgb(71, 8, 243);
@@ -59,10 +71,13 @@ export default {
 .menuUl1 {
     list-style-type: none;
     justify-content: space-around;
-    display: flex;
-    background-color: rgb(62, 176, 180);
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    background-color:rgba(184, 201, 248, 0.842);
     border-radius: 20px;
-    margin-top: 0px
+    margin: 0px;
+    padding:0px;
+    justify-items: center;
 }
 .menuli1 {
     border: 1px solid black;
@@ -98,5 +113,15 @@ export default {
     font-size: 1.3rem;
     display: grid;
 }
+#boitier :hover{
+        background-color: cadetblue;
+        color: white;
+    }
+
 </style>
+
+
+
+
+
 

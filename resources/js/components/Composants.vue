@@ -10,22 +10,10 @@
         <div>
             <compprocesseur></compprocesseur>
         </div>
+        <div>
+            <compcartemere></compcartemere>
+        </div>
 
-  <div class="accordion-item" v-if ="this.$store.state.cartemerechoisistore === ''">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapsefour">
-        Cartes mères
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-          <compcartemere 
-        :processeur=processeurChoisi
-        @delete="deletecartemere">
-        </compcartemere>
-      </div>
-    </div>
-  </div>
   <div class="accordion-item" v-if ="this.$store.state.ssdchoisistore === ''">
     <h2 class="accordion-header" id="headingFive">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapsefour">

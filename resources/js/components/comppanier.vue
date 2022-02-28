@@ -70,6 +70,29 @@
         </b-card-body>
       </b-collapse>
         </b-card>
+        <b-card no-body class="mb-1" v-if ="this.$store.state.cartemerechoisistore != ''">
+            <b-card-header header-tag="header" class="p-1" role="tab">
+                <b-button block v-b-toggle.accordion-4 variant="info">{{ this.$store.state.cartemerechoisistore.text }} {{ this.$store.state.cartemerechoisistore.prix }} €
+                    <i class="bi bi-caret-down-square-fill"></i>
+                </b-button>
+            </b-card-header>
+        <b-collapse id="accordion-4"  accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+            <div class="card" id="cartemere"  style="width: 50%;">
+                <img class="card-img-top" :src= this.$store.state.cartemerechoisistore.img alt="Card image cap">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Taille de la carte mère {{this.$store.state.cartemerechoisistore.taille}}</li>
+                    <li class="list-group-item">Socket de la carte mère :  {{this.$store.state.cartemerechoisistore.socket}}</li>
+                    <li class="list-group-item">Prix : {{ this.$store.state.cartemerechoisistore.prix }} €</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" @click="cartemereEnleve()" class="card-link">Choisir une autre carte mère</a>
+                    <a href="#" @click="boitierValide()" class="card-link">Valider cette carte mère</a>
+                </div> 
+            </div>
+        </b-card-body>
+      </b-collapse>
+        </b-card>
         <h3 class="non" v-if="this.$store.state.prixtotalstore > 0">
             Prix Total = {{ this.$store.state.prixtotalstore }} €</h3>
     </div>
@@ -77,11 +100,6 @@
     <!-- <div class="panier" v-if="this.$store.state.boitierchoisistore != '' || this.$store.state.alimchoisistore !='' || this.$store.state.processeurchoisistore !=''">
         <ul class=ulpanier>
 
-            <li class="lipanier" v-if ="this.$store.state.cartemerechoisistore != ''" @click="cartemereEnleve()">
-                <p class="p">{{ this.$store.state.cartemerechoisistore.text }}</p>
-                <p class="prix" v-if="this.$store.state.cartemerechoisistore.prix != null"> {{ this.$store.state.cartemerechoisistore.prix }} €</p>
-                <p class="enleve" style="color: white">Cliquez pour supprimer et choisir un autre modèle</p>
-            </li>
             <li class="lipanier" v-if ="this.$store.state.ssdchoisistore != ''" @click="ssdEnleve()">
                 <p class="p">{{ this.$store.state.ssdchoisistore.text }}</p>
                 <p class="prix" v-if="this.$store.state.ssdchoisistore.prix != null"> {{ this.$store.state.ssdchoisistore.prix }} €</p>
@@ -100,9 +118,6 @@
             <img class="imageconfig" :src= this.$store.state.boitierchoisistore.img>
             <ul>
 
-                <li class="liconfig">
-                    <img v-if="this.$store.state.cartemerechoisistore != ''" class="imageconfigbouge" :src= this.$store.state.cartemerechoisistore.img>
-                </li>
                 <li class="liconfig">
                     <img v-if="this.$store.state.ssdchoisistore != ''" class="imageconfigbouge" :src= this.$store.state.ssdchoisistore.img>
                 </li>
