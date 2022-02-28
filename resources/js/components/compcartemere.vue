@@ -53,8 +53,15 @@ export default {
         cartemere() {
             axios.get('https://pcpasapas2.herokuapp.com/api/cartemere') 
                 .then(res => {
+                    
                     this.cmbdd = (res.data)
                     console.log(this.cmbdd)
+                    if (this.$store.state.processeurchoisistore != "") {
+                        console.log("entree diff")
+                        console.log(this.cmbdd)
+                        this.cmbdd = this.cmbdd.filter(cm => cm.socket == this.$store.state.processeurchoisistore.socket)
+                        console.log(this.cmbdd)
+                    }
                     this.loading = false
                     return res.data
                 }).catch(function (error) {
