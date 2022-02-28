@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AlimentationsController;
 use App\Http\Controllers\BoitiersController;
-use App\Http\Controllers\CarteMeresController;
+
 use App\Http\Controllers\ProcesseursController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +14,7 @@ Route::get('alimentationsshowGTA', [AlimentationsController::class , 'showGTA'])
 Route::get('boitiers', [BoitiersController::class , 'show']);
 Route::get('processeurs', [ProcesseursController::class , 'show']);
 Route::get('cartemere', 'App\Http\Controllers\CarteMeresController@index');
+Route::get('ssd', 'App\Http\Controllers\SsdController@index');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

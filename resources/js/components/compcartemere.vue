@@ -56,6 +56,9 @@ export default {
                     
                     this.cmbdd = (res.data)
                     console.log(this.cmbdd)
+                    if (this.$store.state.boitierchoisistore.format == "mAtx"){
+                        this.cmbdd = this.cmbdd.filter(cm => cm.taille == 'mAtx')
+                    }
                     if (this.$store.state.processeurchoisistore != "") {
                         console.log("entree diff")
                         console.log(this.cmbdd)
