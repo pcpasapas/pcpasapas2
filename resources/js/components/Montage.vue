@@ -87,7 +87,7 @@ export default {
                     alim:"",
                     processeur:0,
                     ssd:0,
-                    cartemere:1,
+                    cartemere:1, 
                     cg:"",
                 }
                 this.changerpanier(tabconfig)
