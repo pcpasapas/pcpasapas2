@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import compcg from '../components/compcg.vue'
+import compcg from '../components/compcg.vue' 
 import comppanier from '../components/comppanier.vue'
 import compprocesseur from "../components/compprocesseur.vue"
 import compcartemere from "../components/compcartemere.vue"

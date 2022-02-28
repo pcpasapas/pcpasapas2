@@ -1,5 +1,5 @@
 <template>  
-  <div class="accordion-item" v-if ="this.$store.state.processeurchoisistore === ''">
+  <div class="accordion-item" v-if ="this.$store.state.cartemerechoisistore === ''">
     <h2 class="accordion-header" id="headingFour">
       <button id ="cartemere" class="accordion-button collapsed" @click="cartemere()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
         Carte mère
@@ -57,10 +57,20 @@ export default {
                     console.log(this.cmbdd)
                     this.loading = false
                     return res.data
+                }).catch(function (error) {
+                    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                    console.log(error.toJSON());
+                    }
                 })
         }
-    },
-}   
+    }
+}
+  
 </script>
 
 <style scoped>
