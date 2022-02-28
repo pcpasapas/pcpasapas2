@@ -140,7 +140,7 @@ export default {
 
 <style scoped>
 :root {
-    --bleu: rgb(62, 176, 180);
+    --bleu: rgb(62, 176, 180); 
     --bleufonce: rgb(71, 8, 243);
 }
 .menuUl1 {
