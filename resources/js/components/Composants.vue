@@ -16,6 +16,9 @@
         <div>
             <compssd></compssd>
         </div>
+        <div>
+          <compcg></compcg>
+        </div>
 </div>  
 
         <!-- <compcg v-if ="this.$store.state.cgchoisistore ===''"></compcg>

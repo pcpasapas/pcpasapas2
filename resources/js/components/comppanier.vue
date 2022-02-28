@@ -93,42 +93,52 @@
         </b-card-body>
       </b-collapse>
         </b-card>
+        <b-card no-body class="mb-1" v-if ="this.$store.state.ssdchoisistore != ''">
+            <b-card-header header-tag="header" class="p-1" role="tab">
+                <b-button block v-b-toggle.accordion-5 variant="info">{{ this.$store.state.ssdchoisistore.text }} {{ this.$store.state.ssdchoisistore.prix }} €
+                    <i class="bi bi-caret-down-square-fill"></i>
+                </b-button>
+            </b-card-header>
+        <b-collapse id="accordion-5"  accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+            <div class="card" id="ssd"  style="width: 50%;">
+                <img class="card-img-top" :src= this.$store.state.ssdchoisistore.img alt="Card image cap">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Taille du SSD : {{this.$store.state.ssdchoisistore.taille}} Go</li>
+                    <li class="list-group-item">Prix : {{ this.$store.state.ssdchoisistore.prix }} €</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" @click="ssdEnleve()" class="card-link">Choisir un autre SSD</a>
+                    <a href="#" @click="boitierValide()" class="card-link">Valider ce SSD</a>
+                </div> 
+            </div>
+        </b-card-body>
+      </b-collapse>
+        </b-card>
+        <b-card no-body class="mb-1" v-if ="this.$store.state.cgchoisistore != ''">
+            <b-card-header header-tag="header" class="p-1" role="tab">
+                <b-button block v-b-toggle.accordion-6 variant="info">{{ this.$store.state.cgchoisistore.text }} {{ this.$store.state.cgchoisistore.prix }} €
+                    <i class="bi bi-caret-down-square-fill"></i>
+                </b-button>
+            </b-card-header>
+        <b-collapse id="accordion-6"  accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+            <div class="card" id="cg"  style="width: 50%;">
+                <img class="card-img-top" :src= this.$store.state.cgchoisistore.img alt="Card image cap">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Prix : {{ this.$store.state.cgchoisistore.prix }} €</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" @click="cgEnleve()" class="card-link">Choisir une autre carte graphique</a>
+                    <a href="#" @click="boitierValide()" class="card-link">Valider cette carte graphique</a>
+                </div> 
+            </div>
+        </b-card-body>
+      </b-collapse>
+        </b-card>
         <h3 class="non" v-if="this.$store.state.prixtotalstore > 0">
             Prix Total = {{ this.$store.state.prixtotalstore }} €</h3>
     </div>
-    
-    <!-- <div class="panier" v-if="this.$store.state.boitierchoisistore != '' || this.$store.state.alimchoisistore !='' || this.$store.state.processeurchoisistore !=''">
-        <ul class=ulpanier>
-
-            <li class="lipanier" v-if ="this.$store.state.ssdchoisistore != ''" @click="ssdEnleve()">
-                <p class="p">{{ this.$store.state.ssdchoisistore.text }}</p>
-                <p class="prix" v-if="this.$store.state.ssdchoisistore.prix != null"> {{ this.$store.state.ssdchoisistore.prix }} €</p>
-                <p class="enleve" style="color: white">Cliquez pour supprimer et choisir un autre modèle</p>
-            </li>
-            <li class="lipanier" v-if ="this.$store.state.cgchoisistore != ''" @click="cgEnleve()">
-                <p class="p">{{ this.$store.state.cgchoisistore.text }}</p>
-                <p class="prix" v-if="this.$store.state.cgchoisistore.prix != null"> {{ this.$store.state.cgchoisistore.prix }} €</p>
-                <p class="enleve" style="color: white">Cliquez pour supprimer et choisir un autre modèle</p>
-            </li>
-            
-        </ul>
-        <ul class="ulconfig">
-        <h3>Votre Configuration : </h3>
-            <li class="liconfig" v-if="this.$store.state.boitierchoisistore != '' || this.$store.state.alimchoisistore !='' || this.$store.state.processeurchoisistore !=''">               
-            <img class="imageconfig" :src= this.$store.state.boitierchoisistore.img>
-            <ul>
-
-                <li class="liconfig">
-                    <img v-if="this.$store.state.ssdchoisistore != ''" class="imageconfigbouge" :src= this.$store.state.ssdchoisistore.img>
-                </li>
-                <li class="liconfig">
-                    <img v-if="this.$store.state.cgchoisistore != ''" class="imageconfigbouge" :src= this.$store.state.cgchoisistore.img>
-                </li>
-            </ul>
-           </li>  
-        </ul>
-        <section class="basPanier">Les prix sont donnés à titre indicatifs et varient régulièrement. Demandez un devis pour confirmer les tarifs.</section>
-    </div> -->
     </div>
 </template>
 
@@ -143,19 +153,10 @@ export default {
     },
     data() {
         return {
-            // boitierChoisi:"",
-            // prixTotal: 0,
-            // processeurChoisi:"",
-            // alimChoisi:"",
-            // ssdChoisi:"",
-
-            // cartemereChoisi:"",
-
 
         }
     },
     created() {
-        console.log(this.$store.state.boitierchoisistore)
     },
     methods: {
         boitierEnleve() { 
@@ -164,7 +165,6 @@ export default {
         this.$store.state.alimchoisistore=''
         },
         boitierValide(){
-            document.querySelector("#boitier").show = false;
         },
         alimEnleve() { 
         this.$store.state.prixtotalstore = this.$store.state.prixtotalstore-parseFloat(this.$store.state.alimchoisistore.prix)

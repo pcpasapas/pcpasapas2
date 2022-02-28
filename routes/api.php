@@ -15,6 +15,7 @@ Route::get('boitiers', [BoitiersController::class , 'show']);
 Route::get('processeurs', [ProcesseursController::class , 'show']);
 Route::get('cartemere', 'App\Http\Controllers\CarteMeresController@index');
 Route::get('ssd', 'App\Http\Controllers\SsdController@index');
+Route::get('cg', 'App\Http\Controllers\CgController@index');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
