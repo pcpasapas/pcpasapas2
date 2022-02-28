@@ -1,10 +1,14 @@
 <template>  
             <div>
+                <div class="d-flex align-items-center" v-if = 'this.loading'>
+                    <strong>Recherche de vos composants ...</strong>
+                    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                </div>
             <comppanier></comppanier>
             <h3>{{ label }}</h3>
             
             <ul class="menuUl1">
-            <li class="menuli1" v-for="(item) in menus" @click="changerMenus(item.id, item.text_prog, item.label)" :key='item'>{{ item.text }}
+            <li class="menuli1" v-for="(item) in menus" @click="changerMenus(item.id, item.text_prog, item.label)" :key='item.id'>{{ item.text }}
             <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
             <img v-show="item.img != ''" class="image" :src= item.img>
             </li>
@@ -55,33 +59,30 @@ const utilisation = [
 
 var menus = []
 import comppanier from './comppanier.vue'
-import menusproc from '../components/compprocesseur.vue'
-import menusboitier from '../components/compboitier.vue'
-import menusalim from '../components/compalim.vue'
-import menusssd from '../components/compssd.vue'
-import menuscartemere from '../components/compcartemere.vue'
-import menuscg from '../components/compcg.vue'
 import router from '../router'
 let tabconfig =[]
 export default {
     name: "Montage",
     data() {
         return {
+            tabconfig: {},
             label: label0,
             premierMenu_,
             menus: premierMenu_,
             alimentationsbdd:[],
+            boitiersbdd:[],
+            loading: false,
         };
     },
     methods: {
-        changerMenus(id, index, label) {
+        async changerMenus(id, index, label) {
             console.log("change")
 
             if (index === "composants_boitier") {
                 router.push({ name: "ComposantsView" });
             }
             else if (id === 21) {
-                var tabconfig = {
+                tabconfig = {
                     boitier:0,
                     alim:"",
                     processeur:0,
@@ -92,53 +93,46 @@ export default {
                 this.changerpanier(tabconfig)
             }
             else if (id === 11) {
-                console.log("gta V");
-                var tabconfig = {
-                    boitier:2,
-                    alim:1,
+                tabconfig = {
+                    boitier:1,
+                    alim:0,
                     processeur:3,
-                    ssd:1,
-                    cartemere:0,
+                    ssd:2,
+                    cartemere:2,
                     cg:1,
                 }
                 // console.log(menuscg.props.menuscg.default[1])
                 // this.changerpanier(tabconfig)
-                console.log(this.$store.state.alimchoisistore.text)
-                this.changerpanier();
+                await this.changerpanier(tabconfig);
+                this.loading = false;
             }
             else {
                 this.menus = eval(index);
             }
         },
-        async changerpanier() {
-            await axios.get('http://127.0.0.1:8000/api/alimentationsshowGTA')
+        async changerpanier(tabconfig) {
+            this.loading = true
+            await axios.get('http://127.0.0.1:8000/api/boitiers')
                 .then(res => {
-                    this.alimentationsbdd = (res.data[0])
-                    console.log(this.alimentationsbdd)
-                    this.loading = false
-                    return res.data
+                    this.boitiersbdd = (res.data);
+                    this.$store.commit('UPDATE_BOITIER',this.boitiersbdd[eval(tabconfig.boitier)]);
+                    this.$store.commit('UPDATE_PRIX', this.boitiersbdd[eval(tabconfig.boitier)].prix);  
                 })
-            // this.$store.commit('UPDATE_BOITIER',menusboitier.props.menusboitier.default[tab.boitier])
-            // this.$store.commit('UPDATE_PRIX', this.$store.state.boitierchoisistore.prix)
-            // if(this.alimentationsbdd != '') {
-                console.log("entree dans le store")
-            this.$store.commit('UPDATE_ALIM',this.alimentationsbdd)
-            this.$store.commit('UPDATE_PRIX', this.$store.state.alimchoisistore.prix)
-            console.log(this.$store.state.alimchoisistore.text)
-    
-            // this.$store.commit('UPDATE_PROCESSEUR',menusproc.props.menusproc.default[tab.processeur])
-            // this.$store.commit('UPDATE_PRIX', this.$store.state.processeurchoisistore.prix)
-            // this.$store.commit('UPDATE_SSD',menusssd.props.menusssd.default[tab.ssd])
-            // this.$store.commit('UPDATE_PRIX', this.$store.state.ssdchoisistore.prix)
-            // this.$store.commit('UPDATE_CARTE_MERE',menuscartemere.props.menuscartemere.default[tab.cartemere])
-            // this.$store.commit('UPDATE_PRIX', this.$store.state.cartemerechoisistore.prix)
-            // if (tab.cg != "") {
-            //     this.$store.commit('UPDATE_CG',menuscg.props.menuscg.default[tab.cg])
-            //     this.$store.commit('UPDATE_PRIX', this.$store.state.cgchoisistore.prix)
-            // }
-            
-        }
-    },
+            await axios.get('http://127.0.0.1:8000/api/alimentations')
+                .then(res => {
+                    this.alimbdd = (res.data);
+                    this.$store.commit('UPDATE_ALIM',this.alimbdd[eval(tabconfig.alim)]);
+                    this.$store.commit('UPDATE_PRIX', this.alimbdd[eval(tabconfig.alim)].prix)
+                    
+                })
+            await axios.get('http://127.0.0.1:8000/api/processeurs')
+                .then(res => {
+                    this.procbdd = (res.data);
+                    this.$store.commit('UPDATE_PROCESSEUR',this.procbdd[eval(tabconfig.processeur)]);
+                    this.$store.commit('UPDATE_PRIX', this.procbdd[eval(tabconfig.processeur)].prix)
+                })   
+        }     
+},            
     components: {
         comppanier
     }
