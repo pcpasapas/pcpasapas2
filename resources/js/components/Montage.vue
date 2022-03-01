@@ -96,10 +96,10 @@ export default {
                 tabconfig = {
                     boitier:1,
                     alim:0,
-                    processeur:3,
-                    ssd:2,
-                    cartemere:2,
-                    cg:1,
+                    processeur:1,
+                    ssd:1,
+                    cartemere:1,
+                    cg:0,
                 }
                 await this.changerpanier(tabconfig);
                 this.loading = false;
@@ -109,6 +109,7 @@ export default {
             }
         },
         changerpanier(tabconfig) {
+            // GTA V 
             this.loading = true
             axios.get('https://pcpasapas2.herokuapp.com/api/boitiers')
                 .then(res => {
@@ -129,6 +130,25 @@ export default {
                     this.$store.commit('UPDATE_PROCESSEUR',this.procbdd[eval(tabconfig.processeur)]);
                     this.$store.commit('UPDATE_PRIX', this.procbdd[eval(tabconfig.processeur)].prix)
                 })   
+            axios.get('https://pcpasapas2.herokuapp.com/api/cartemere')
+                .then(res => {
+                    this.cmbdd = (res.data);
+                    this.$store.commit('UPDATE_CARTE_MERE',this.cmbdd[eval(tabconfig.cartemere)]);
+                    this.$store.commit('UPDATE_PRIX', this.cmbdd[eval(tabconfig.cartemere)].prix)
+                }) 
+            axios.get('https://pcpasapas2.herokuapp.com/api/ssd')
+                .then(res => {
+                    this.ssdbdd = (res.data);
+                    this.$store.commit('UPDATE_SSD',this.ssdbdd[eval(tabconfig.ssd)]);
+                    this.$store.commit('UPDATE_PRIX', this.ssdbdd[eval(tabconfig.ssd)].prix)
+                }) 
+            axios.get('https://pcpasapas2.herokuapp.com/api/cg')
+                .then(res => {
+                    this.cgbdd = (res.data);
+                    console.log(this.cgbdd)
+                    this.$store.commit('UPDATE_CG',this.cgbdd[eval(tabconfig.cg)]);
+                    this.$store.commit('UPDATE_PRIX', this.cgbdd[eval(tabconfig.cg)].prix)
+                }) 
         }     
 },            
     components: {

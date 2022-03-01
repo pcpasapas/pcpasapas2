@@ -2,8 +2,9 @@
 <div>
     <div class="accordion" role="tablist">
         <b-card no-body class="mb-1" v-if="this.$store.state.boitierchoisistore != ''">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-1 variant="info">{{ this.$store.state.boitierchoisistore.text }} {{ this.$store.state.boitierchoisistore.prix }} € 
+            <b-card-header header-tag="header" class="" role="tab" >
+                <b-button block style ="background-color : white" v-b-toggle.accordion-1 variant="info">{{ this.$store.state.boitierchoisistore.text }} {{ this.$store.state.boitierchoisistore.prix }} €
+                 <img class="card-img-top" style="width: 10%" :src="this.$store.state.boitierchoisistore.img" alt="Card image cap">    
                 <i class="bi bi-caret-down-square-fill"></i>
                 </b-button>
             </b-card-header>
@@ -27,7 +28,8 @@
         </b-card>
         <b-card no-body class="mb-1" v-if ="this.$store.state.alimchoisistore != ''">
             <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-2 variant="info">{{ this.$store.state.alimchoisistore.text }} {{ this.$store.state.alimchoisistore.prix }} €
+                <b-button block style ="background-color : white" v-b-toggle.accordion-2 variant="info">{{ this.$store.state.alimchoisistore.text }} {{ this.$store.state.alimchoisistore.prix }} €
+                    <img class="card-img-top" style="width: 10%" :src="this.$store.state.alimchoisistore.img" alt="Card image cap">    
                     <i class="bi bi-caret-down-square-fill"></i>
                 </b-button>
             </b-card-header>
@@ -49,7 +51,8 @@
         </b-card>
         <b-card no-body class="mb-1" v-if ="this.$store.state.processeurchoisistore != ''">
             <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-3 variant="info">{{ this.$store.state.processeurchoisistore.text }} {{ this.$store.state.processeurchoisistore.prix }} €
+                <b-button block style ="background-color : white" v-b-toggle.accordion-3 variant="info">{{ this.$store.state.processeurchoisistore.text }} {{ this.$store.state.processeurchoisistore.prix }} €
+                    <img class="card-img-top" style="width: 10%" :src="this.$store.state.processeurchoisistore.img" alt="Card image cap">
                     <i class="bi bi-caret-down-square-fill"></i>
                 </b-button>
             </b-card-header>
@@ -72,7 +75,8 @@
         </b-card>
         <b-card no-body class="mb-1" v-if ="this.$store.state.cartemerechoisistore != ''">
             <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-4 variant="info">{{ this.$store.state.cartemerechoisistore.text }} {{ this.$store.state.cartemerechoisistore.prix }} €
+                <b-button block style ="background-color : white" v-b-toggle.accordion-4 variant="info">{{ this.$store.state.cartemerechoisistore.text }} {{ this.$store.state.cartemerechoisistore.prix }} €
+                    <img class="card-img-top" style="width: 10%" :src="this.$store.state.cartemerechoisistore.img" alt="Card image cap">
                     <i class="bi bi-caret-down-square-fill"></i>
                 </b-button>
             </b-card-header>
@@ -95,7 +99,8 @@
         </b-card>
         <b-card no-body class="mb-1" v-if ="this.$store.state.ssdchoisistore != ''">
             <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-5 variant="info">{{ this.$store.state.ssdchoisistore.text }} {{ this.$store.state.ssdchoisistore.prix }} €
+                <b-button block style ="background-color : white" v-b-toggle.accordion-5 variant="info">{{ this.$store.state.ssdchoisistore.text }} {{ this.$store.state.ssdchoisistore.prix }} €
+                    <img class="card-img-top" style="width: 10%" :src="this.$store.state.ssdchoisistore.img" alt="Card image cap">
                     <i class="bi bi-caret-down-square-fill"></i>
                 </b-button>
             </b-card-header>
@@ -117,7 +122,8 @@
         </b-card>
         <b-card no-body class="mb-1" v-if ="this.$store.state.cgchoisistore != ''">
             <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-6 variant="info">{{ this.$store.state.cgchoisistore.text }} {{ this.$store.state.cgchoisistore.prix }} €
+                <b-button block style ="background-color : white" v-b-toggle.accordion-6 variant="info">{{ this.$store.state.cgchoisistore.text }} {{ this.$store.state.cgchoisistore.prix }} €
+                    <img class="card-img-top" style="width: 10%" :src="this.$store.state.cgchoisistore.img" alt="Card image cap">
                     <i class="bi bi-caret-down-square-fill"></i>
                 </b-button>
             </b-card-header>
