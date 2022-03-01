@@ -110,20 +110,20 @@ export default {
         },
         changerpanier(tabconfig) {
             this.loading = true
-            axios.get('http://127.0.0.1:8000/api/boitiers')
+            axios.get('https://pcpasapas2.herokuapp.com/api/boitiers')
                 .then(res => {
                     this.boitiersbdd = (res.data);
                     this.$store.commit('UPDATE_BOITIER',this.boitiersbdd[eval(tabconfig.boitier)]);
                     this.$store.commit('UPDATE_PRIX', this.boitiersbdd[eval(tabconfig.boitier)].prix);  
                 })
-            axios.get('http://127.0.0.1:8000/api/alimentations')
+            axios.get('https://pcpasapas2.herokuapp.com/api/alimentations')
                 .then(res => {
                     this.alimbdd = (res.data);
                     this.$store.commit('UPDATE_ALIM',this.alimbdd[eval(tabconfig.alim)]);
                     this.$store.commit('UPDATE_PRIX', this.alimbdd[eval(tabconfig.alim)].prix)
                     
                 })
-            axios.get('http://127.0.0.1:8000/api/processeurs')
+            axios.get('https://pcpasapas2.herokuapp.com/api/processeurs')
                 .then(res => {
                     this.procbdd = (res.data);
                     this.$store.commit('UPDATE_PROCESSEUR',this.procbdd[eval(tabconfig.processeur)]);
