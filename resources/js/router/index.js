@@ -36,12 +36,6 @@ const routes = [{
         component: Devis,
         props: true
     },
-    {
-        path: "/Home",
-        name: "Home",
-        component: Devis,
-        props: true
-    },
 ];
 
 const router = new VueRouter({

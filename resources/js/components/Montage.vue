@@ -1,20 +1,21 @@
 <template>  
             <div>
-                <div class="d-flex align-items-center" v-if = 'this.loading'>
+                <div class="d-flex align-items-center" v-if='loading != false'>
                     <strong>Recherche de vos composants ...</strong>
                     <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
                 </div>
             <comppanier></comppanier>
-            <h3>{{ label }}</h3>
-            
-            <ul class="menuUl1">
-            <li class="menuli1" v-for="(item) in menus" @click="changerMenus(item.id, item.text_prog, item.label)" :key='item.id'>{{ item.text }}
-            <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
-            <img v-show="item.img != ''" class="image" :src= item.img>
-            </li>
-            </ul>
-            <ul class="menusUl1" >
-            </ul>
+            <div v-if="choixfait !=true">      
+                <h3>{{ label }}</h3>
+                <ul class="menuUl1">
+                <li class="menuli1" v-for="(item) in menus" @click="changerMenus(item.id, item.text_prog, item.label)" :key='item.id'>{{ item.text }}
+                <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
+                <img v-show="item.img != ''" class="image" :src= item.img>
+                </li> 
+                </ul>
+                <ul class="menusUl1" >
+                </ul>
+            </div>
             </div>
 </template>
 
@@ -65,6 +66,7 @@ export default {
     name: "Montage",
     data() {
         return {
+            choixfait: false,
             tabconfig: {},
             label: label0,
             premierMenu_,
@@ -93,6 +95,9 @@ export default {
                 this.changerpanier(tabconfig)
             }
             else if (id === 11) {
+                this.loading = true
+                console.log(this.loading)
+                this.choixfait = true
                 tabconfig = {
                     boitier:1,
                     alim:0,
@@ -101,55 +106,56 @@ export default {
                     cartemere:1,
                     cg:0,
                 }
-                await this.changerpanier(tabconfig);
-                this.loading = false;
+                await this.changerpanier(tabconfig)
+                    this.loading = false
+                    console.log(this.loading)
             }
+                
             else {
                 this.menus = eval(index);
             }
         },
-        changerpanier(tabconfig) {
+            async changerpanier(tabconfig) {
             // GTA V 
-            this.loading = true
-            axios.get('https://pcpasapas2.herokuapp.com/api/boitiers')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/boitiers')
                 .then(res => {
                     this.boitiersbdd = (res.data);
                     this.$store.commit('UPDATE_BOITIER',this.boitiersbdd[eval(tabconfig.boitier)]);
                     this.$store.commit('UPDATE_PRIX', this.boitiersbdd[eval(tabconfig.boitier)].prix);  
                 })
-            axios.get('https://pcpasapas2.herokuapp.com/api/alimentations')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/alimentations')
                 .then(res => {
                     this.alimbdd = (res.data);
                     this.$store.commit('UPDATE_ALIM',this.alimbdd[eval(tabconfig.alim)]);
                     this.$store.commit('UPDATE_PRIX', this.alimbdd[eval(tabconfig.alim)].prix)
                     
                 })
-            axios.get('https://pcpasapas2.herokuapp.com/api/processeurs')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/processeurs')
                 .then(res => {
                     this.procbdd = (res.data);
                     this.$store.commit('UPDATE_PROCESSEUR',this.procbdd[eval(tabconfig.processeur)]);
                     this.$store.commit('UPDATE_PRIX', this.procbdd[eval(tabconfig.processeur)].prix)
                 })   
-            axios.get('https://pcpasapas2.herokuapp.com/api/cartemere')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/cartemere')
                 .then(res => {
                     this.cmbdd = (res.data);
                     this.$store.commit('UPDATE_CARTE_MERE',this.cmbdd[eval(tabconfig.cartemere)]);
                     this.$store.commit('UPDATE_PRIX', this.cmbdd[eval(tabconfig.cartemere)].prix)
                 }) 
-            axios.get('https://pcpasapas2.herokuapp.com/api/ssd')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/ssd')
                 .then(res => {
                     this.ssdbdd = (res.data);
                     this.$store.commit('UPDATE_SSD',this.ssdbdd[eval(tabconfig.ssd)]);
                     this.$store.commit('UPDATE_PRIX', this.ssdbdd[eval(tabconfig.ssd)].prix)
                 }) 
-            axios.get('https://pcpasapas2.herokuapp.com/api/cg')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/cg')
                 .then(res => {
                     this.cgbdd = (res.data);
                     console.log(this.cgbdd)
                     this.$store.commit('UPDATE_CG',this.cgbdd[eval(tabconfig.cg)]);
                     this.$store.commit('UPDATE_PRIX', this.cgbdd[eval(tabconfig.cg)].prix)
                 }) 
-        }     
+        }  
 },            
     components: {
         comppanier
