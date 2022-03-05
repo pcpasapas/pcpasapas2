@@ -23,6 +23,7 @@ const routes = [{
         name: "Montage",
         component: Montage,
         props: true
+
     },
     {
         path: "/composants",
@@ -37,6 +38,7 @@ const routes = [{
         props: true
     },
 ];
+
 
 const router = new VueRouter({
     mode: 'history',

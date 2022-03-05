@@ -8,7 +8,7 @@
             <div v-if="choixfait !=true">      
                 <h3>{{ label }}</h3>
                 <ul class="menuUl1">
-                <li class="menuli1" v-for="(item) in menus" @click="changerMenus(item.id, item.text_prog, item.label)" :key='item.id'>{{ item.text }}
+                <li class="menuli1" v-for="(item) in this.$store.state.menus" @click="changerMenus(item.id, item.text_prog, item.label)" :key='item.id'>{{ item.text }}
                 <p class="prix" v-if="item.prix != null"> {{ item.prix }} €</p>
                 <img v-show="item.img != ''" class="image" :src= item.img>
                 </li> 
@@ -36,8 +36,8 @@ const budget = [
 ]
 
 const config_jeu = [
-    { id: 11 , id_supp:2, text:"GTA V", img:""},
-    { id: 12 , id_supp:2, text:"Battlefield V", img:""},
+    { id: 11 , id_supp:2, text:"GTA V", img:"/images/gtav.jpg"},
+    { id: 12 , id_supp:2, text:"Forza Horizon 5", img:"/images/forzahorizon5.jpg"},
     { id: 13 , id_supp:2, text:"Les Sims", img:""},
     { id: 14 , id_supp:2, text:"Monopoly", img:""},
 ]
@@ -45,7 +45,7 @@ const config_jeu = [
 const premierMenu_ = [
     { id: 1 , id_supp: 1, text_prog:"config_jeu", text:"En fonction de la configuration recommmandée d'un jeu", img:""},
     { id: 2 , id_supp: 1, text_prog:"utilisation", text:"En fonction de votre utilisation", img:""},
-    { id: 3 , id_supp: 1, text_prog:'budget', label:label2, text:"En fonction de votre budget", img:""},
+    { id: 3 , id_supp: 1, text_prog:'budget', text:"En fonction de votre budget", img:""},
     { id: 4 , id_supp: 1, text_prog:"composants_boitier", text:"Composants après composants", img:""},
 ]
 
@@ -67,16 +67,18 @@ export default {
     data() {
         return {
             choixfait: false,
+            menus: premierMenu_,
             tabconfig: {},
             label: label0,
             premierMenu_,
-            menus: premierMenu_,
             alimentationsbdd:[],
             boitiersbdd:[],
             loading: false,
         };
     },
-    methods: {
+
+        
+        methods: {
         async changerMenus(id, index, label) {
             console.log("change")
 
@@ -110,9 +112,25 @@ export default {
                     this.loading = false
                     console.log(this.loading)
             }
+            else if (id === 12) {
+                this.loading = true
+                console.log(this.loading)
+                this.choixfait = true
+                tabconfig = {
+                    boitier:1,
+                    alim:0,
+                    processeur:2,
+                    ssd:1,
+                    cartemere:1,
+                    cg:0,
+                }
+                await this.changerpanier(tabconfig)
+                    this.loading = false
+                    console.log(this.loading)
+            }
                 
             else {
-                this.menus = eval(index);
+                this.$store.commit ('UPDATE_MENUS', eval(index));
             }
         },
             async changerpanier(tabconfig) {

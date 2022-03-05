@@ -2,7 +2,7 @@
     <div class="menu">
         <ul class="menuUl">
             <router-link :to="{ name:'Home'}" class="menuli acceuil">
-                <li  @click="fetchAllData()">Acceuil</li>
+                <li @click="effacepanier()">Acceuil</li>
             </router-link>
             <li class="menuli a1" @click="effacepanier()">Dépannage / Recupération de données</li>
             <router-link :to="{ name:'Montage'}">
@@ -20,39 +20,28 @@
 </template>
 
 <script>
-// import router from '../router'
-import axios from 'axios';
-import store from '../store';
+
 
 export default {
 	name: "TitreMenu",
     // components: router,
     data: function () {
         return {
-            allData:[]
+            allData:[],
+            premierMenu_ :[
+    { id: 1 , id_supp: 1, text_prog:"config_jeu", text:"En fonction de la configuration recommmandée d'un jeu", img:""},
+    { id: 2 , id_supp: 1, text_prog:"utilisation", text:"En fonction de votre utilisation", img:""},
+    { id: 3 , id_supp: 1, text_prog:'budget', text:"En fonction de votre budget", img:""},
+    { id: 4 , id_supp: 1, text_prog:"composants_boitier", text:"Composants après composants", img:""},
+]
         }
         // eslint-disable-next-line no-unused-labels 
     },
-    methods: {
-        fetchAllData(){
-            console.log("entree dans la fonction")
-            // axios.get('http://127.0.0.1:8000/api/alims')
-            //     .then(res => {
-            //         console.log(res.data)
-            //         this.allData = res.data
-            //         console.log(this.allData)
-            //     })
-            axios.get('http://127.0.0.1:8000/api/alimentations')
-                .then(res => {
-                    console.log(res.data)
-                })
-            
-                
-            },
-    
+    methods: {  
         effacepanier(){
             console.log("effacepanier")
             this.$store.commit("EFFACER_PANIER")
+            this.$store.commit('UPDATE_MENUS', this.premierMenu_)
         }
     }
 }

@@ -20,7 +20,7 @@
                 </ul>
                 <div class="card-body">
                     <a href="#" @click="boitierEnleve()" class="card-link">Choisir un autre boitier</a>
-                    <a href="#" @click="boitierValide()" class="card-link">Valider ce boitier</a>
+                    <!-- <a href="#" @click="boitierValide()" class="card-link">Valider ce boitier</a> -->
                 </div> 
             </div>
         </b-card-body>
@@ -43,7 +43,7 @@
                 </ul>
                 <div class="card-body">
                     <a href="#" @click="alimEnleve()" class="card-link">Choisir une autre alimentation</a>
-                    <a href="#" @click="boitierValide()" class="card-link">Valider cette alimentation</a>
+                    <!-- <a href="#" @click="boitierValide()" class="card-link">Valider cette alimentation</a> -->
                 </div> 
             </div>
         </b-card-body>
@@ -67,7 +67,7 @@
                 </ul>
                 <div class="card-body">
                     <a href="#" @click="processeurEnleve()" class="card-link">Choisir un autre processeur</a>
-                    <a href="#" @click="boitierValide()" class="card-link">Valider ce processeur</a>
+                    <!-- <a href="#" @click="boitierValide()" class="card-link">Valider ce processeur</a> -->
                 </div> 
             </div>
         </b-card-body>
@@ -91,7 +91,7 @@
                 </ul>
                 <div class="card-body">
                     <a href="#" @click="cartemereEnleve()" class="card-link">Choisir une autre carte mère</a>
-                    <a href="#" @click="boitierValide()" class="card-link">Valider cette carte mère</a>
+                    <!-- <a href="#" @click="boitierValide()" class="card-link">Valider cette carte mère</a> -->
                 </div> 
             </div>
         </b-card-body>
@@ -114,7 +114,7 @@
                 </ul>
                 <div class="card-body">
                     <a href="#" @click="ssdEnleve()" class="card-link">Choisir un autre SSD</a>
-                    <a href="#" @click="boitierValide()" class="card-link">Valider ce SSD</a>
+                    <!-- <a href="#" @click="boitierValide()" class="card-link">Valider ce SSD</a> -->
                 </div> 
             </div>
         </b-card-body>
@@ -136,7 +136,7 @@
                 </ul>
                 <div class="card-body">
                     <a href="#" @click="cgEnleve()" class="card-link">Choisir une autre carte graphique</a>
-                    <a href="#" @click="boitierValide()" class="card-link">Valider cette carte graphique</a>
+                    <!-- <a href="#" @click="boitierValide()" class="card-link">Valider cette carte graphique</a> -->
                 </div> 
             </div>
         </b-card-body>
@@ -169,8 +169,6 @@ export default {
         this.$store.state.prixtotalstore = this.$store.state.prixtotalstore-parseFloat(this.$store.state.boitierchoisistore.prix)
         this.$store.state.boitierchoisistore=''
         this.$store.state.alimchoisistore=''
-        },
-        boitierValide(){
         },
         alimEnleve() { 
         this.$store.state.prixtotalstore = this.$store.state.prixtotalstore-parseFloat(this.$store.state.alimchoisistore.prix)

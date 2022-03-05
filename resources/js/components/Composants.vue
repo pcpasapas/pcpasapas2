@@ -11,13 +11,16 @@
             <compprocesseur></compprocesseur>
         </div>
         <div>
-            <compcartemere></compcartemere>
+            <compcartemere></compcartemere> 
         </div>
         <div>
             <compssd></compssd>
         </div>
         <div>
           <compcg></compcg>
+        </div>
+        <div>
+            <compram></compram>
         </div>
 </div>  
 </template>
@@ -30,6 +33,7 @@ import compcartemere from "../components/compcartemere.vue"
 import compboitier from "../components/compboitier.vue"
 import compalim from "../components/compalim.vue"
 import compssd from '../components/compssd.vue'
+import compram from '../components/compram.vue'
 
 
 
@@ -76,7 +80,8 @@ export default {
     compalim,
     compssd,
     comppanier,
-    compcg
+    compcg,
+    compram
   }
 }
 </script>

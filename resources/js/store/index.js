@@ -13,9 +13,19 @@ const store = new Vuex.Store({
             cartemerechoisistore: "",
             prixtotalstore: 0,
             cgchoisistore: "",
+            ramchoisistore: "",
+            menus: [
+                { id: 1, id_supp: 1, text_prog: "config_jeu", text: "En fonction de la configuration recommmandée d'un jeu", img: "" },
+                { id: 2, id_supp: 1, text_prog: "utilisation", text: "En fonction de votre utilisation", img: "" },
+                { id: 3, id_supp: 1, text_prog: 'budget', text: "En fonction de votre budget", img: "" },
+                { id: 4, id_supp: 1, text_prog: "composants_boitier", text: "Composants après composants", img: "" },
+            ],
         }
     },
     mutations: {
+        UPDATE_MENUS(state, payload) {
+            state.menus = payload
+        },
         UPDATE_BOITIER(state, payload) {
             state.boitierchoisistore = payload
         },
@@ -34,6 +44,9 @@ const store = new Vuex.Store({
         UPDATE_CG(state, payload) {
             state.cgchoisistore = payload
         },
+        UPDATE_RAM(state, payload) {
+            state.ramchoisistore = payload
+        },
         UPDATE_PRIX(state, payload) {
             state.prixtotalstore += payload
         },
@@ -44,7 +57,8 @@ const store = new Vuex.Store({
                 state.processeurchoisistore = "",
                 state.ssdchoisistore = "",
                 state.alimchoisistore = "",
-                state.cgchoisistore = ""
+                state.cgchoisistore = "",
+                state.ramchoisistore = ""
         }
     },
     actions: {
