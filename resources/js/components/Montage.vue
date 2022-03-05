@@ -107,6 +107,7 @@ export default {
                     ssd:1,
                     cartemere:1,
                     cg:0,
+                    ram:0,
                 }
                 await this.changerpanier(tabconfig)
                     this.loading = false
@@ -123,6 +124,7 @@ export default {
                     ssd:1,
                     cartemere:1,
                     cg:0,
+                    ram:0,
                 }
                 await this.changerpanier(tabconfig)
                     this.loading = false
@@ -172,6 +174,13 @@ export default {
                     console.log(this.cgbdd)
                     this.$store.commit('UPDATE_CG',this.cgbdd[eval(tabconfig.cg)]);
                     this.$store.commit('UPDATE_PRIX', this.cgbdd[eval(tabconfig.cg)].prix)
+                }) 
+            await axios.get('https://pcpasapas2.herokuapp.com/api/ram')
+                .then(res => {
+                    this.rambdd = (res.data);
+                    console.log(this.rambdd)
+                    this.$store.commit('UPDATE_RAM',this.rambdd[eval(tabconfig.ram)]);
+                    this.$store.commit('UPDATE_PRIX', this.rambdd[eval(tabconfig.ram)].prix)
                 }) 
         }  
 },            

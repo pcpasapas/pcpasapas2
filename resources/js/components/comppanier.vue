@@ -106,7 +106,7 @@
             </b-card-header>
         <b-collapse id="accordion-5"  accordion="my-accordion" role="tabpanel">
         <b-card-body>
-            <div class="card" id="ssd"  style="width: 50%;">
+            <div class="card" id="ssd" style="width: 50%;">
                 <img class="card-img-top" :src= this.$store.state.ssdchoisistore.img alt="Card image cap">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Taille du SSD : {{this.$store.state.ssdchoisistore.taille}} Go</li>
@@ -142,10 +142,33 @@
         </b-card-body>
       </b-collapse>
         </b-card>
-        <h3 class="non" v-if="this.$store.state.prixtotalstore > 0">
+        <b-card no-body class="mb-1" v-if ="this.$store.state.ramchoisistore != ''">
+            <b-card-header header-tag="header" class="p-1" role="tab">
+                <b-button block style ="background-color : white" v-b-toggle.accordion-7 variant="info">{{ this.$store.state.ramchoisistore.text }} {{ this.$store.state.ramchoisistore.prix }} €
+                    <img class="card-img-top" style="width: 10%" :src="this.$store.state.ramchoisistore.img" alt="Card image cap">
+                    <i class="bi bi-caret-down-square-fill"></i>
+                </b-button>
+            </b-card-header>
+        <b-collapse id="accordion-7"  accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+            <div class="card" id="ram"  style="width: 50%;">
+                <img class="card-img-top" :src= this.$store.state.ramchoisistore.img alt="Card image cap">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Prix : {{ this.$store.state.ramchoisistore.prix }} €</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" @click="ramEnleve()" class="card-link">Choisir une autre mémoire ram</a>
+                    <!-- <a href="#" @click="boitierValide()" class="card-link">Valider cette carte graphique</a> -->
+                </div> 
+            </div>
+        </b-card-body>
+      </b-collapse>
+        </b-card>
+        
+    </div>
+    <h3 class="non" v-if="this.$store.state.prixtotalstore > 0">
             Prix Total = {{ this.$store.state.prixtotalstore }} €</h3>
-    </div>
-    </div>
+</div>
 </template>
 
 <script>
@@ -190,12 +213,23 @@ export default {
         this.$store.state.prixtotalstore = this.$store.state.prixtotalstore-parseFloat(this.$store.state.cgchoisistore.prix)
         this.$store.state.cgchoisistore=''
         },
+        ramEnleve() { 
+        this.$store.state.prixtotalstore = this.$store.state.prixtotalstore-parseFloat(this.$store.state.ramchoisistore.prix)
+        this.$store.state.ramchoisistore=''
+        },
 
     }
 }
 </script>
 
 <style lang="css" scoped>
+.btn{
+    height:100px;
+}
+.accordion{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 .p{
     margin-top:10px;
     height: 50%;
