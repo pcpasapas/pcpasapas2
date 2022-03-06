@@ -41,6 +41,12 @@ class ProcesseursController extends Controller
         $posts = Processeurs::orderBy('created_at', 'desc')->get();
         return response($posts);
     }
+    public function showId(Processeurs $id)
+    {
+        $posts = Processeurs::find($id);
+        // $posts = Alimentations::where('id', $id)->get();
+        return response($posts);
+    }
 
 /**
  * Show the form for editing the specified resource.

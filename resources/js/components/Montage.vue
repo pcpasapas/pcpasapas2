@@ -89,7 +89,7 @@ export default {
                 tabconfig = {
                     boitier:4,
                     alim:"",
-                    processeur:0,
+                    processeur:1,
                     ssd:0,
                     cartemere:1, 
                     cg:"",
@@ -141,8 +141,8 @@ export default {
                 .then(res => {
                     this.boitiersbdd = (res.data);
                     console.log(this.boitiersbdd)
-                    this.$store.commit('UPDATE_BOITIER',this.boitiersbdd[eval(tabconfig.boitier)]);
-                    this.$store.commit('UPDATE_PRIX', this.boitiersbdd[eval(tabconfig.boitier)].prix);  
+                    this.$store.commit('UPDATE_BOITIER',this.boitiersbdd[0]);
+                    this.$store.commit('UPDATE_PRIX', this.boitiersbdd[0].prix);  
                 })
             if (tabconfig.alim != ""){
                 await axios.get('https://pcpasapas2.herokuapp.com/api/alimentations/' + eval(tabconfig.alim))
@@ -153,11 +153,11 @@ export default {
                     this.$store.commit('UPDATE_PRIX', this.alimbdd[0].prix) 
                 })
             }
-            await axios.get('https://pcpasapas2.herokuapp.com/api/processeurs')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/processeurs/' + eval(tabconfig.processeur))
                 .then(res => {
                     this.procbdd = (res.data);
-                    this.$store.commit('UPDATE_PROCESSEUR',this.procbdd[eval(tabconfig.processeur)]);
-                    this.$store.commit('UPDATE_PRIX', this.procbdd[eval(tabconfig.processeur)].prix)
+                    this.$store.commit('UPDATE_PROCESSEUR',this.procbdd[0]);
+                    this.$store.commit('UPDATE_PRIX', this.procbdd[0].prix)
                 })   
             await axios.get('https://pcpasapas2.herokuapp.com/api/cartemere')
                 .then(res => {
