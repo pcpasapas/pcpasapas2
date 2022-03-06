@@ -148,8 +148,8 @@ export default {
                 .then(res => {
                     this.alimbdd = (res.data);
                     console.log(this.alimbdd)
-                    this.$store.commit('UPDATE_ALIM',this.alimbdd[eval(tabconfig.alim)]);
-                    this.$store.commit('UPDATE_PRIX', this.alimbdd[eval(tabconfig.alim)].prix)
+                    this.$store.commit('UPDATE_ALIM',this.alimbdd);
+                    this.$store.commit('UPDATE_PRIX', this.alimbdd.prix)
                     
                 })
             await axios.get('https://pcpasapas2.herokuapp.com/api/processeurs')
