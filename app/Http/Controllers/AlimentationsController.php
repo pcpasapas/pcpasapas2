@@ -55,7 +55,7 @@ class AlimentationsController extends Controller
 
     public function showId(Alimentations $id)
     {
-        $posts = Alimentations::where('id', $id)->get();
+        $posts = Alimentations::findOrFail('id')->get();
         return response($posts);
     }
 
