@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Route;
 
 /* |-------------------------------------------------------------------------- | API Routes |-------------------------------------------------------------------------- | | Here is where you can register API routes for your application. These | routes are loaded by the RouteServiceProvider within a group which | is assigned the "api" middleware group. Enjoy building your API! | */
 Route::get('alimentations', [AlimentationsController::class , 'show']);
-Route::get('/alimentations/{id}', [AlimentationsController::class , 'showId']);
+// Route::get('/alimentations/{id}', [AlimentationsController::class , 'showId']);
+Route::get('/alimentations/{id}', function ($id) {
+    return 'Alimentations ' . $id;
+});
 Route::get('alimentationsshowGTA', [AlimentationsController::class , 'showGTA']);
 Route::get('boitiers', [BoitiersController::class , 'show']);
 Route::get('processeurs', [ProcesseursController::class , 'show']);

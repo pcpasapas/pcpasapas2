@@ -30,5 +30,5 @@ Route::get('/devis', function () {
 Route::get('/Home', [App\Http\Controllers\HomeController::class , 'index'])->name('home');
 
 
-Route::get('contact-us', 'ContactController@getContact');
-Route::post('contact-us', 'ContactController@saveContact');
+// Route::get('contact-us', 'ContactController@getContact');
+// Route::post('contact-us', 'ContactController@saveContact');
