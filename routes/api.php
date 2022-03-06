@@ -17,6 +17,7 @@ Route::get('boitiers/{id}', [BoitiersController::class , 'showId']);
 Route::get('processeurs', [ProcesseursController::class , 'show']);
 Route::get('processeurs/{id}', [ProcesseursController::class , 'showId']);
 Route::get('cartemere', 'App\Http\Controllers\CarteMeresController@index');
+Route::get('cartemere/{id}', 'App\Http\Controllers\CarteMeresController@showId');
 Route::get('ssd', 'App\Http\Controllers\SsdController@index');
 Route::get('cg', 'App\Http\Controllers\CgController@index');
 Route::get('ram', 'App\Http\Controllers\RamController@index');

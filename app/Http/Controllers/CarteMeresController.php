@@ -10,4 +10,10 @@ class CarteMeresController extends Controller
     {
         return CarteMeres::all();
     }
+    public function showId(CarteMeres $id)
+    {
+        $posts = CarteMeres::find($id);
+        // $posts = Alimentations::where('id', $id)->get();
+        return response($posts);
+    }
 }

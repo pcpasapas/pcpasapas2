@@ -91,7 +91,7 @@ export default {
                     alim:"",
                     processeur:1,
                     ssd:0,
-                    cartemere:1, 
+                    cartemere:3, 
                     cg:"",
                 }
                 this.changerpanier(tabconfig)
@@ -159,11 +159,11 @@ export default {
                     this.$store.commit('UPDATE_PROCESSEUR',this.procbdd[0]);
                     this.$store.commit('UPDATE_PRIX', this.procbdd[0].prix)
                 })   
-            await axios.get('https://pcpasapas2.herokuapp.com/api/cartemere')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/cartemere/' + eval(tabconfig.cartemere))
                 .then(res => {
                     this.cmbdd = (res.data);
-                    this.$store.commit('UPDATE_CARTE_MERE',this.cmbdd[eval(tabconfig.cartemere)]);
-                    this.$store.commit('UPDATE_PRIX', this.cmbdd[eval(tabconfig.cartemere)].prix)
+                    this.$store.commit('UPDATE_CARTE_MERE',this.cmbdd[0]);
+                    this.$store.commit('UPDATE_PRIX', this.cmbdd[0].prix)
                 }) 
             await axios.get('https://pcpasapas2.herokuapp.com/api/ssd')
                 .then(res => {
