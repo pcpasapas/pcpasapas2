@@ -93,6 +93,7 @@ export default {
                     ssd:1,
                     cartemere:3, 
                     cg:"",
+                    ram:1,
                 }
                 this.changerpanier(tabconfig)
             }
@@ -171,19 +172,22 @@ export default {
                     this.$store.commit('UPDATE_SSD',this.ssdbdd[0]);
                     this.$store.commit('UPDATE_PRIX', this.ssdbdd[0].prix)
                 }) 
-            await axios.get('https://pcpasapas2.herokuapp.com/api/cg')
+            if (tabconfig.cg != ""){
+                await axios.get('https://pcpasapas2.herokuapp.com/api/cg/' + eval(tabconfig.cg))
                 .then(res => {
                     this.cgbdd = (res.data);
                     console.log(this.cgbdd)
-                    this.$store.commit('UPDATE_CG',this.cgbdd[eval(tabconfig.cg)]);
-                    this.$store.commit('UPDATE_PRIX', this.cgbdd[eval(tabconfig.cg)].prix)
-                }) 
-            await axios.get('https://pcpasapas2.herokuapp.com/api/ram')
+                    this.$store.commit('UPDATE_CG',this.cgbdd[0]);
+                    this.$store.commit('UPDATE_PRIX', this.cgbdd[0].prix)
+                })
+            }
+            
+            await axios.get('https://pcpasapas2.herokuapp.com/api/ram/' + eval(tabconfig.ram))
                 .then(res => {
                     this.rambdd = (res.data);
                     console.log(this.rambdd)
-                    this.$store.commit('UPDATE_RAM',this.rambdd[eval(tabconfig.ram)]);
-                    this.$store.commit('UPDATE_PRIX', this.rambdd[eval(tabconfig.ram)].prix)
+                    this.$store.commit('UPDATE_RAM',this.rambdd[0]);
+                    this.$store.commit('UPDATE_PRIX', this.rambdd[0].prix)
                 }) 
         }  
 },            

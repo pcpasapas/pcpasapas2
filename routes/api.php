@@ -21,7 +21,9 @@ Route::get('cartemere/{id}', 'App\Http\Controllers\CarteMeresController@showId')
 Route::get('ssd', 'App\Http\Controllers\SsdController@index');
 Route::get('ssd/{id}', 'App\Http\Controllers\SsdController@showId');
 Route::get('cg', 'App\Http\Controllers\CgController@index');
+Route::get('cg/{id}', 'App\Http\Controllers\CgController@showId');
 Route::get('ram', 'App\Http\Controllers\RamController@index');
+Route::get('ram/{id}', 'App\Http\Controllers\RamController@showId');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

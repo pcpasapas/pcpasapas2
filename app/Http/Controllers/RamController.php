@@ -10,4 +10,10 @@ class RamController extends Controller
     {
         return ram::all();
     }
+    public function showId(ram $id)
+    {
+        $posts = ram::find($id);
+        // $posts = Alimentations::where('id', $id)->get();
+        return response($posts);
+    }
 }

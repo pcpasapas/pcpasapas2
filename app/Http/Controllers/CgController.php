@@ -10,4 +10,10 @@ class CgController extends Controller
     {
         return cg::all();
     }
+    public function showId(cg $id)
+    {
+        $posts = cg::find($id);
+        // $posts = Alimentations::where('id', $id)->get();
+        return response($posts);
+    }
 }
