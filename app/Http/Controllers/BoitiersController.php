@@ -51,6 +51,12 @@ class BoitiersController extends Controller
         return response($posts);
     // return response()->json($posts);
     }
+    public function showId(Boitiers $id)
+    {
+        $posts = Boitiers::find($id);
+        // $posts = Alimentations::where('id', $id)->get();
+        return response($posts);
+    }
 
 /**
  * Show the form for editing the specified resource.

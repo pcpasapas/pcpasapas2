@@ -87,8 +87,8 @@ export default {
             }
             else if (id === 21) {
                 tabconfig = {
-                    boitier:0,
-                    alim:1,
+                    boitier:4,
+                    alim:"",
                     processeur:0,
                     ssd:0,
                     cartemere:1, 
@@ -137,21 +137,22 @@ export default {
         },
             async changerpanier(tabconfig) {
             // GTA V 
-            await axios.get('https://pcpasapas2.herokuapp.com/api/boitiers' )
+            await axios.get('https://pcpasapas2.herokuapp.com/api/boitiers/' + eval(tabconfig.boitier))
                 .then(res => {
                     this.boitiersbdd = (res.data);
                     console.log(this.boitiersbdd)
                     this.$store.commit('UPDATE_BOITIER',this.boitiersbdd[eval(tabconfig.boitier)]);
                     this.$store.commit('UPDATE_PRIX', this.boitiersbdd[eval(tabconfig.boitier)].prix);  
                 })
-            await axios.get('https://pcpasapas2.herokuapp.com/api/alimentations/' + eval(tabconfig.alim))
+            if (tabconfig.alim != ""){
+                await axios.get('https://pcpasapas2.herokuapp.com/api/alimentations/' + eval(tabconfig.alim))
                 .then(res => {
                     this.alimbdd = (res.data);
                     console.log(this.alimbdd)
-                    this.$store.commit('UPDATE_ALIM',this.alimbdd);
-                    this.$store.commit('UPDATE_PRIX', this.alimbdd.prix)
-                    
+                    this.$store.commit('UPDATE_ALIM',this.alimbdd[0]);
+                    this.$store.commit('UPDATE_PRIX', this.alimbdd[0].prix) 
                 })
+            }
             await axios.get('https://pcpasapas2.herokuapp.com/api/processeurs')
                 .then(res => {
                     this.procbdd = (res.data);
