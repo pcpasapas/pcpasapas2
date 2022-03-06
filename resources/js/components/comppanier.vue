@@ -166,8 +166,11 @@
         </b-card>
         
     </div>
-    <h3 class="non" v-if="this.$store.state.prixtotalstore > 0">
+    <div v-if="this.$store.state.prixtotalstore > 0">
+        <h3 class="non" >
             Prix Total = {{ this.$store.state.prixtotalstore }} €</h3>
+        <button type="button" class="btn2 btn-success btn-lg" @click="ajouterAuDevis()">Ajouter ces composants au devis</button>
+    </div>
 </div>
 </template>
 
@@ -217,6 +220,9 @@ export default {
         this.$store.state.prixtotalstore = this.$store.state.prixtotalstore-parseFloat(this.$store.state.ramchoisistore.prix)
         this.$store.state.ramchoisistore=''
         },
+        ajouterAuDevis() {
+            this.$router.push('/devis')
+        }
 
     }
 }

@@ -29,8 +29,8 @@
       <div class="col-auto my-1">
         <label class="mr-sm-2" for="inlineFormCustomSelect">Votre demande concerne :</label>
         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-          <option selected>Dépannage / Récupération de données</option>
-          <option>Montage Pc Complet</option>
+          <option>Dépannage / Récupération de données</option>
+          <option selected>Montage Pc Complet</option>
           <option>Achat de pièces détachées</option>
           <option>Création de sites internet</option>
         </select>
@@ -39,8 +39,37 @@
         <label>Informations supplémentaires </label>
         <textarea name="message"></textarea>
       </div>
+      <div class="form-group col-md-2">
+        <label>Votre configuration choisie :  </label>
+      </div>
     </div>
   </form>
+  <div v-if="this.$store.state.boitierchoisistore !=''">
+    <b-form-group
+      id="fieldset-horizontal"
+      label-cols-sm="4"
+      label-cols-lg="3"
+      content-cols-sm
+      content-cols-lg="7"
+      label="Votre Boitier : "
+      label-for="select-horizontal"
+    >
+      <b-form-select disabled v-model="selected" :options="optionsBoitier" id="select-horizontal"></b-form-select>
+    </b-form-group>
+  </div>
+  <div v-if="this.$store.state.alimchoisistore !=''">
+    <b-form-group
+      id="fieldset-horizontal"
+      label-cols-sm="4"
+      label-cols-lg="3"
+      content-cols-sm
+      content-cols-lg="7"
+      label="Votre Alimentation : "
+      label-for="select-horizontal"
+    >
+      <b-form-select disabled v-model="selected" :options="optionsAlim" id="select-horizontal"></b-form-select>
+    </b-form-group>
+  </div>
 </div>
 </template>
 
@@ -48,6 +77,17 @@
 import emailjs from '@emailjs/browser';
 
 export default {
+  data() {
+    return {
+      selected: 'a',
+      optionsBoitier : [
+        { value: 'a', text: this.$store.state.boitierchoisistore.text + this.$store.state.boitierchoisistore.prix + " €"},
+      ],
+      optionsAlim : [
+        { value: 'a', text: this.$store.state.alimchoisistore.text + this.$store.state.alimchoisistore.prix + " €"},
+      ]
+    }
+  },
   methods: {
     sendEmail() {
       emailjs.sendForm('service_y8whgsv', 'template_8ijl6oj', this.$refs.form, 'user_uNtiX5dqwGSZwrnzZXWZh')

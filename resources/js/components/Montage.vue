@@ -86,6 +86,9 @@ export default {
                 router.push({ name: "ComposantsView" });
             }
             else if (id === 21) {
+                // Utilisation bureautique
+                this.loading = true
+                this.choixfait = true
                 tabconfig = {
                     boitier:4,
                     alim:"",
@@ -95,41 +98,40 @@ export default {
                     cg:"",
                     ram:1,
                 }
-                this.changerpanier(tabconfig)
+                await this.changerpanier(tabconfig)
+                    this.loading = false
             }
             else if (id === 11) {
+                // Gta V
                 this.loading = true
-                console.log(this.loading)
                 this.choixfait = true
                 tabconfig = {
-                    boitier:1,
+                    boitier:2,
                     alim:1,
-                    processeur:1,
-                    ssd:1,
-                    cartemere:1,
-                    cg:0,
-                    ram:0,
+                    processeur:3,
+                    ssd:2,
+                    cartemere:2,
+                    cg:1,
+                    ram:1,
                 }
                 await this.changerpanier(tabconfig)
                     this.loading = false
-                    console.log(this.loading)
             }
             else if (id === 12) {
+                //Forza Horizon 5
                 this.loading = true
-                console.log(this.loading)
                 this.choixfait = true
                 tabconfig = {
-                    boitier:1,
-                    alim:0,
-                    processeur:2,
-                    ssd:1,
-                    cartemere:1,
-                    cg:0,
-                    ram:0,
+                    boitier:2,
+                    alim:1,
+                    processeur:3,
+                    ssd:2,
+                    cartemere:2,
+                    cg:1,
+                    ram:1,
                 }
                 await this.changerpanier(tabconfig)
                     this.loading = false
-                    console.log(this.loading)
             }
                 
             else {
