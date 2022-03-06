@@ -224,7 +224,8 @@ export default {
 
 <style lang="css" scoped>
 .btn{
-    height:100px;
+    height:120px;
+    width:100%;
 }
 .accordion{
     display: grid;

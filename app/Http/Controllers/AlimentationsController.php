@@ -53,6 +53,12 @@ class AlimentationsController extends Controller
     // return response()->json($posts);
     }
 
+    public function showId(Alimentations $id)
+    {
+        $posts = Alimentations::where('id', $id)->get();
+        return response($posts);
+    }
+
     public function showGTA(Alimentations $alimentations)
     {
         $posts = Alimentations::where('id', '1')->get();
