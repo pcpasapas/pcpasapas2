@@ -90,7 +90,7 @@ export default {
                     boitier:4,
                     alim:"",
                     processeur:1,
-                    ssd:0,
+                    ssd:1,
                     cartemere:3, 
                     cg:"",
                 }
@@ -165,11 +165,11 @@ export default {
                     this.$store.commit('UPDATE_CARTE_MERE',this.cmbdd[0]);
                     this.$store.commit('UPDATE_PRIX', this.cmbdd[0].prix)
                 }) 
-            await axios.get('https://pcpasapas2.herokuapp.com/api/ssd')
+            await axios.get('https://pcpasapas2.herokuapp.com/api/ssd/' + eval(tabconfig.ssd))
                 .then(res => {
                     this.ssdbdd = (res.data);
-                    this.$store.commit('UPDATE_SSD',this.ssdbdd[eval(tabconfig.ssd)]);
-                    this.$store.commit('UPDATE_PRIX', this.ssdbdd[eval(tabconfig.ssd)].prix)
+                    this.$store.commit('UPDATE_SSD',this.ssdbdd[0]);
+                    this.$store.commit('UPDATE_PRIX', this.ssdbdd[0].prix)
                 }) 
             await axios.get('https://pcpasapas2.herokuapp.com/api/cg')
                 .then(res => {

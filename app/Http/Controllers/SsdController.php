@@ -10,4 +10,10 @@ class SsdController extends Controller
     {
         return Ssd::all();
     }
+    public function showId(Ssd $id)
+    {
+        $posts = Ssd::find($id);
+        // $posts = Alimentations::where('id', $id)->get();
+        return response($posts);
+    }
 }
