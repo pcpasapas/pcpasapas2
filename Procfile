@@ -1,1 +1,1 @@
-web: $(composer config bin-dir)/heroku-php-nginx -C nginx.conf public/
+vendor/bin/heroku-php-apache2 public/
