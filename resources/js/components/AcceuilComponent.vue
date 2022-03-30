@@ -22,7 +22,8 @@ export default {
 </script>
 <template>
   <div>
-  <h5>Contenu modifié le 28/02 à 17:53  </h5>
+  <h5>Contenu modifié le 30/03 à 08:54  </h5>
+  <h5> Les visiteurs en tests peuvent créer un compte et se connecter en cliquant sur mon compte</h5>
   <Logo_></Logo_>
   <TitreMenu></TitreMenu>
   <router-view></router-view>
