@@ -25,6 +25,10 @@ Route::get('/devis', function () {
     return view('welcome');
 });
 
+Route::get('/creation', function () {
+    return view('welcome');
+});
+
 
 
 Route::get('/Home', [App\Http\Controllers\HomeController::class , 'index'])->name('home');

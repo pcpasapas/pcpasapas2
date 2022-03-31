@@ -8,15 +8,16 @@
             <router-link :to="{ name:'Montage'}">
                 <li class="menuli a1" @click="effacepanier()">Montage PC complet</li>
             </router-link>
+            <router-link :to="{ name:'Creation'}">
+                <li class="menuli a2" @click="effacepanier()">Création de sites internet</li>
+            </router-link>
             <router-link :to="{ name:'ComposantsView'}">
                 <li class="menuli a2" @click="effacepanier()">Achat de pieces détachées</li>
             </router-link>
             <router-link :to="{ name:'Devis'}">
                 <li class="menuli a2" @click="effacepanier()">Demande de devis</li>
             </router-link>
-            <router-link :to="{ name:'Creation'}">
-                <li class="menuli a2" @click="effacepanier()">Création de sites internet</li>
-            </router-link> 
+             
         </ul>
     </div>   
 </template>
