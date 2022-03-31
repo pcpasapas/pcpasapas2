@@ -14,7 +14,9 @@
             <router-link :to="{ name:'Devis'}">
                 <li class="menuli a2" @click="effacepanier()">Demande de devis</li>
             </router-link>
-            <li class="menuli a2" @click="effacepanier()">Création de sites internet</li>
+            <router-link :to="{ name:'Creation'}">
+                <li class="menuli a2" @click="effacepanier()">Création de sites internet</li>
+            </router-link> 
         </ul>
     </div>   
 </template>

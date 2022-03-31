@@ -5,6 +5,7 @@ import Home from "../components/Home.vue";
 import Montage from "../components/Montage.vue";
 import Composants from "../components/Composants.vue";
 import Devis from "../components/compdevis.vue";
+import Creation from "../components/compcreation.vue";
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
@@ -35,6 +36,12 @@ const routes = [{
         path: "/devis",
         name: "Devis",
         component: Devis,
+        props: true
+    },
+    {
+        path: "/creation",
+        name: "Creation",
+        component: Creation,
         props: true
     },
 ];
