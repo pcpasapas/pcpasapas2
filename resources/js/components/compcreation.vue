@@ -3,6 +3,7 @@
     <div class="creation">
         <h1>Création de sites internet</h1>
     </div>
+</div>
 </template>
 
 <script>
