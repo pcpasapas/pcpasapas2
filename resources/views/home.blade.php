@@ -21,6 +21,8 @@
     </div>
     <div id="app">
             {{-- <example-component></example-component> --}}
+            <h4>Bonjour </h4>
+            {{ Auth::user()->name }}
             <acceuil-component></acceuil-component>
             
         </div>
