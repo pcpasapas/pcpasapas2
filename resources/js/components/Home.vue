@@ -11,7 +11,7 @@
             <img class="image" src="/images/depannage.jpg">
         </section>
         <section class="sect">   
-            <h3>Achat et vente de pièces détachées neuves ou d'occasion</h3>
+            <h3>Achat et vente de pièces détachées neuves ou d'occasions</h3>
             <img class="image" src="/images/piecesdetachees.png">
         </section>
     </div>
