@@ -11,7 +11,8 @@ export default {
   data: (function () {
     return {
       menus: [],
-      data:[]
+      data:[],
+      v0: true,
     }
   }),
   mounted() {
@@ -22,8 +23,18 @@ export default {
 </script>
 <template>
   <div>
+    <v-checkbox
+      v-model="v0"
+      label="Cacher les infos de developpement"
+    ></v-checkbox>
+    <v-banner
+      v-model="v0"
+      single-line
+      transition="slide-y-transition"
+    >
   <h5>Contenu modifié le 30/03 à 08:54  </h5>
   <h5> Les visiteurs en tests peuvent créer un compte et se connecter en cliquant sur mon compte</h5>
+    </v-banner>
   <Logo_></Logo_>
   <TitreMenu></TitreMenu>
   <router-view></router-view>
