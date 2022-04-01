@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">Connexion</div>
 
                 <div class="card-body">
@@ -15,7 +15,7 @@
                     @endif
 
                     Vous êtes connecté
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
