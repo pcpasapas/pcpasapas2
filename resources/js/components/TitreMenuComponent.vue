@@ -2,7 +2,7 @@
     <div class="menu">
         <ul class="menuUl">
             <router-link :to="{ name:'Home'}" class="menuli acceuil">
-                <li @click="effacepanier()">Acceuil</li>
+                <li @click="effacepanier()">Accueil</li>
             </router-link>
             <li class="menuli a1" @click="effacepanier()">Dépannage / Recupération de données</li>
             <router-link :to="{ name:'Montage'}">
