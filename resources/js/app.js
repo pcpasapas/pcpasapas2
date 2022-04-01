@@ -13,6 +13,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import router from './router';
 import store from './store';
+import vuetify from './vuetify';
 import { BootstrapVue, BootstrapVueIcons, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
@@ -51,5 +52,6 @@ const app = new Vue({
     el: '#app',
     router,
     store,
+    vuetify,
     components: {}
 });

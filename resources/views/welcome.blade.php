@@ -23,6 +23,7 @@
     </head>
     <body class="antialiased">
         <div id="app">
+            <h4>Patientez la page met longtemps a charger parce que c'est en tests</h4>
             {{-- <example-component></example-component> --}}
             <acceuil-component></acceuil-component>
             
