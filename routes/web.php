@@ -32,7 +32,7 @@ Route::get('/creation', function () {
 
 
 Route::get('/Home', [App\Http\Controllers\HomeController::class , 'index'])->name('home');
-
+Route::get('logout', ['uses' => 'Auth\AuthController@getLogout', 'as' => 'logout']);
 
 // Route::get('contact-us', 'ContactController@getContact');
 // Route::post('contact-us', 'ContactController@saveContact');

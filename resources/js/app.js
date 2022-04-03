@@ -41,6 +41,9 @@ Vue.use(VueRouter);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('acceuil-component', require('./components/AcceuilComponent.vue').default);
+if (document.querySelector("meta[name='user_id']") != null) {
+    Vue.prototype.$userId = document.querySelector("meta[name='user_id']").getAttribute('content');
+}
 // Vue.component('logo-component', require('./components/LogoComponent.vue').default);
 /** 
  * Next, we will create a fresh Vue application instance and attach it to

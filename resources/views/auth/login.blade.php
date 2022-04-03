@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <h4>Si vous êtes sur mobile et que vous n'avez pas encore de compte ... cliquez sur les 3 petites barres en haut à droite pour créer un compte</h4>
                 <div class="card-header">Se connecter</div>
 
                 <div class="card-body">

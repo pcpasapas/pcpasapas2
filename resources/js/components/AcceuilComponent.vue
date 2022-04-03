@@ -2,6 +2,8 @@
 import Logo_ from './LogoComponent.vue'
 import TitreMenu from './TitreMenuComponent.vue'
 
+
+
 export default {
   name:'Home',
   components: {
@@ -13,6 +15,7 @@ export default {
       menus: [],
       data:[],
       v0: true,
+      user_id: this.$userId,
     }
   }),
   mounted() {
@@ -23,18 +26,6 @@ export default {
 </script>
 <template>
   <div>
-    <v-checkbox
-      v-model="v0"
-      label="Cacher les infos de developpement"
-    ></v-checkbox>
-    <v-banner
-      v-model="v0"
-      single-line
-      transition="slide-y-transition"
-    >
-  <h5>Contenu modifié le 30/03 à 08:54  </h5>
-  <h5> Les visiteurs en tests peuvent créer un compte et se connecter en cliquant sur mon compte</h5>
-    </v-banner>
   <Logo_></Logo_>
   <TitreMenu></TitreMenu>
   <router-view></router-view>

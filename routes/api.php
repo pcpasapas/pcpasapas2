@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AlimentationsController;
 use App\Http\Controllers\BoitiersController;
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProcesseursController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +26,10 @@ Route::get('ram', 'App\Http\Controllers\RamController@index');
 Route::get('ram/{id}', 'App\Http\Controllers\RamController@showId');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
 });
+Route::get('/me', [AuthController::class , 'me']);
+Route::get('logout', ['uses' => 'Auth\AuthController@getLogout', 'as' => 'logout']);
+
+Route::get('user', 'AuthController@user');
+Route::post('logout', 'AuthController@logout');

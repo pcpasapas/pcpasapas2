@@ -1,6 +1,7 @@
 <template>
 <div>
     <div class="home">
+        
         <!-- <img class="logo" src="../assets/images/PcP.png"/> -->
         <section class="sect1">
             <h3>Votre Pc sur mesure monté au meilleur prix avec des pièces neuves ou d'occasion</h3>

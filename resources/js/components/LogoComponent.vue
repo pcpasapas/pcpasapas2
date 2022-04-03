@@ -2,7 +2,23 @@
 	<div class="divlogo">
             <img src="/images/PcP.png" class="logo"/>
             <img src="/images/ordinateurtitre.png" class="ordinateur" />
-            <p><a href="Home">Mon compte </a> <br> <br> <br> Mon panier</p>
+            <p><a href="Home" v-if="user_id==null">Se connecter </a>
+            <b-button v-else v-b-toggle="['collapse-a']">{{user_id}}</b-button>
+            <b-collapse id="collapse-a" class="mt-2">
+                <b-card>
+                    <a href= "url('/auth/logout')"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    Se déconnecter
+                </a>
+                </b-card>
+            </b-collapse>
+            
+
+                                    <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form> -->
+             <br> <p>Mon panier</p>
     </div>
 
 
@@ -10,7 +26,11 @@
 
 <script>
 export default {
-	// name: 'Logo_'
+	data() {
+        return {
+            user_id: this.$userId,
+        }
+    },
 }
 </script>
 <style>
